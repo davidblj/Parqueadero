@@ -23,7 +23,7 @@ pipeline {
         stage('Checkout') {
             steps { 
                 echo "------------>Checkout<------------"
-                checkout([$class: 'GitSCM', branches: [[name: '*/master', name: "*/develop"]],
+                checkout([$class: 'GitSCM', branches: [[name: '*/master', name: '*/develop']],
                         doGenerateSubmoduleConfigurations: false, extensions: [], 
                         gitTool:'Git_Centos',
                         submoduleCfg: [], 
@@ -45,7 +45,7 @@ pipeline {
 
         stage('Static Code Analysis') {      
             steps {        
-                echo '------------>AnÃ¡lisis de cÃ³digo estÃ¡tico<------------'        
+                echo '------------>Anlisis de codigo estatico<------------'        
                 withSonarQubeEnv('Sonar') { 
                     sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
                 }
