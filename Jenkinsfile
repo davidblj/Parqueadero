@@ -5,17 +5,17 @@ pipeline {
         label 'Slave_Induccion'  
     }
 
-    //Opciones específicas de Pipeline dentro del Pipeline
+    //Opciones especÃ­ficas de Pipeline dentro del Pipeline
     options { 
-        //Mantener artefactos y salida de consola para el # específico de ejecucionesrecientes del Pipeline.
+        //Mantener artefactos y salida de consola para el # especÃ­fico de ejecucionesrecientes del Pipeline.
         buildDiscarder(logRotator(numToKeepStr: '3'))
         //No permitir ejecuciones concurrentes de PipelinedisableConcurrentBuilds()  
     }
 
-    //Una sección que define las herramientas para “autoinstalar” y poner en la PATH  tools 
+    //Una secciÃ³n que define las herramientas para â€œautoinstalarâ€� y poner en la PATH  tools 
     tools {   
-        jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master    
-        gradle 'Gradle4.5_Centos' //Preinstalada en la Configuración del Master  
+        jdk 'JDK8_Centos' //Preinstalada en la ConfiguraciÃ³n del Master    
+        gradle 'Gradle4.5_Centos' //Preinstalada en la ConfiguraciÃ³n del Master  
     }
 
     stages {
@@ -23,16 +23,16 @@ pipeline {
         stage('Checkout') {
             steps { 
                 echo "------------>Checkout<------------"
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+                checkout([$class: 'GitSCM', branches: [[name: '*/master', name: "*/develop"]],
                         doGenerateSubmoduleConfigurations: false, extensions: [], 
                         gitTool:'Git_Centos',
                         submoduleCfg: [], 
                         userRemoteConfigs: [[credentialsId:'GitHub_davidblj', url:'https://github.com/davidblj/Parqueadero']]])
-            }
+            } 
         }
 
         stage('Unit Tests') {      
-            steps {        
+            steps {
                 echo "------------>Unit Tests<------------"      
             }    
         }  
@@ -45,7 +45,7 @@ pipeline {
 
         stage('Static Code Analysis') {      
             steps {        
-                echo '------------>Análisis de código estático<------------'        
+                echo '------------>AnÃ¡lisis de cÃ³digo estÃ¡tico<------------'        
                 withSonarQubeEnv('Sonar') { 
                     sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
                 }
