@@ -28,6 +28,7 @@ pipeline {
                         gitTool:'Git_Centos',
                         submoduleCfg: [], 
                         userRemoteConfigs: [[credentialsId:'GitHub_davidblj', url:'https://github.com/davidblj/Parqueadero']]])
+            	sh 'gradle clean'
             } 
         }
 
@@ -54,7 +55,8 @@ pipeline {
 
         stage('Build') {      
             steps {       
-                echo "------------>Build<------------"      
+                echo "------------>Build<------------"
+                sh 'gradle build'      
             }
         }
     }
