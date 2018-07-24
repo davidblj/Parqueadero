@@ -31,19 +31,6 @@ pipeline {
             	sh 'gradle clean'
             } 
         }
-
-        stage('Unit Tests') {      
-            steps {
-                echo "------------>Unit Tests<------------"      
-            }    
-        }  
-
-        stage('Integration Tests') {      
-            steps {        
-                echo "------------>Integration Tests<------------"      
-            }   
-        }   
-        
         
         stage('Build') {      
             steps {       
@@ -51,6 +38,19 @@ pipeline {
                 sh 'gradle build'      
             }
         }
+
+        stage('Unit Tests') {      
+            steps {
+                echo "------------>Unit Tests<------------" 
+                sh 'gradle test'     
+            }    
+        }  
+
+        stage('Integration Tests') {      
+            steps {        
+                echo "------------>Integration Tests<------------"      
+            }   
+        }                 
 
         stage('Static Code Analysis') {      
             steps {        
