@@ -43,6 +43,14 @@ pipeline {
                 echo "------------>Integration Tests<------------"      
             }   
         }   
+        
+        
+        stage('Build') {      
+            steps {       
+                echo "------------>Build<------------"
+                sh 'gradle build'      
+            }
+        }
 
         stage('Static Code Analysis') {      
             steps {        
@@ -52,13 +60,7 @@ pipeline {
                 }
             }
         }
-
-        stage('Build') {      
-            steps {       
-                echo "------------>Build<------------"
-                sh 'gradle build'      
-            }
-        }
+       
     }
 
     post {    
