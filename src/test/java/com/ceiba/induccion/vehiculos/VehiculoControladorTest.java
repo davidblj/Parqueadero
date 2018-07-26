@@ -42,7 +42,7 @@ public class VehiculoControladorTest {
     private WebApplicationContext webApplicationContext;
     
     @Autowired
-    void setConverters(HttpMessageConverter<?>[] converters) {
+    void setConverters(HttpMessageConverter<?>[] converters) {  // mapping to jackson dependency
 
         this.mappingJackson2HttpMessageConverter = Arrays.asList(converters).stream()
             .filter(hmc -> hmc instanceof MappingJackson2HttpMessageConverter)
