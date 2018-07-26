@@ -1,8 +1,7 @@
 
 pipeline {
     
-    agent {
-    	label 'Slave_Induccion'  
+    agent {    	
     	docker  { image 'mongo' }          
     }
 
