@@ -8,6 +8,7 @@ public class Vehiculo {
     private String id;	
 	
 	private String placa;
+	private String tipo;
 	
 	public Vehiculo() {}
 	
@@ -22,4 +23,20 @@ public class Vehiculo {
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}	
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) throws Exception {
+		
+		boolean tipoEsValido = tipo.equals("CARRO") || tipo.equals("MOTO");
+		
+		if (tipoEsValido) {
+			this.tipo = tipo;
+		} else {
+			throw new Exception("tipo invalido");
+		}		
+	}
+
 }

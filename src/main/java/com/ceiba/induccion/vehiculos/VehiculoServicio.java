@@ -13,6 +13,13 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 
 	@Override
 	public void agregarVehiculo(VehiculoDTO vehiculo) {
-		repositorio.save(ApiDTOBuilder.VehiculoDTOToVehiculo(vehiculo));
+					
+		try {
+			repositorio.save(ApiDTOBuilder.VehiculoDTOToVehiculo(vehiculo));
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+			
+		// add specific implementation logic
 	}
 }
