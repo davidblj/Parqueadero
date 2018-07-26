@@ -2,7 +2,7 @@
 pipeline {
     
     agent {    	
-    	docker  { image 'mongo' }          
+    	label 'Slave_Induccion'      
     }
 
     //Opciones especÃ­ficas de Pipeline dentro del Pipeline
