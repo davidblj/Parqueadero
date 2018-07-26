@@ -35,7 +35,7 @@ pipeline {
         stage('Build') {      
             steps {       
                 echo "------------>Build<------------"
-                
+                sh 'scripts/mongodb.sh'
                 sh 'gradle build'
             }
         }
