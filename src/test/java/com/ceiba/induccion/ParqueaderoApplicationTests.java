@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.ceiba.induccion;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,5 +12,4 @@ public class ParqueaderoApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
