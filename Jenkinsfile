@@ -1,8 +1,9 @@
 
 pipeline {
     
-    agent {  
-        label 'Slave_Induccion'  
+    agent {
+    	label 'Slave_Induccion'  
+    	docker  { image 'mongo' }          
     }
 
     //Opciones especÃ­ficas de Pipeline dentro del Pipeline
@@ -34,8 +35,8 @@ pipeline {
         
         stage('Build') {      
             steps {       
-                echo "------------>Build<------------"
-                sh 'scripts/mongodb.sh'
+                echo "------------>Build<------------"   
+                sh 'mongod'             
                 sh 'gradle build'
             }
         }
