@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ceiba.induccion.excepciones.ParametrosInvalidos;
+
 @RestController
 @RequestMapping("/api/1.0/parqueadero/vehiculos")
 @CrossOrigin
@@ -17,9 +19,15 @@ public class VehiculoControlador {
 	@Autowired
 	VehiculoServicio servicio;
 
-	@RequestMapping(value="", method=RequestMethod.POST, produces="application/json" )
-	public ResponseEntity<VehiculoDTO> crear(@RequestBody VehiculoDTO vehiculo) {
-		servicio.agregarVehiculo(vehiculo);
-		return new ResponseEntity<>(HttpStatus.OK);
+	@RequestMapping(value="", method=RequestMethod.POST)
+	public ResponseEntity<?> crear(@RequestBody VehiculoDTO vehiculo) {
+		
+		try {			
+			servicio.agregarVehiculo(vehiculo);
+			return ResponseEntity.accepted().body("");	
+			
+		} catch (ParametrosInvalidos e) {
+			return ResponseEntity.badRequest().body(e.getMessage());			
+		}		
 	}
 }

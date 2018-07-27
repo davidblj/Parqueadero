@@ -12,8 +12,9 @@ public class Vehiculo {
 	
 	public Vehiculo() {}
 	
-	public Vehiculo(String placa) { 
+	public Vehiculo(String placa, String tipo) { 
 		this.placa = placa;
+		this.tipo = tipo;
 	}
 
 	public String getPlaca() {
@@ -29,14 +30,12 @@ public class Vehiculo {
 	}
 
 	public void setTipo(String tipo) throws Exception {
-		
-		boolean tipoEsValido = tipo.equals("CARRO") || tipo.equals("MOTO");
-		
-		if (tipoEsValido) {
-			this.tipo = tipo;
-		} else {
-			throw new Exception("tipo invalido");
-		}		
+		this.tipo = tipo;
 	}
-
+	
+	// class utils 
+	
+	public boolean tipoEsValido() {
+		return this.tipo.equals("CARRO") || this.tipo.equals("MOTO");
+	}
 }

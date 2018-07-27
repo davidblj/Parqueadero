@@ -10,6 +10,6 @@ public class ApiDTOBuilder {
 //	}
 	
 	public static Vehiculo VehiculoDTOToVehiculo(VehiculoDTO vehiculo) {
-		return new Vehiculo(vehiculo.getPlaca());
+		return new Vehiculo(vehiculo.getPlaca(), vehiculo.getTipo());
 	}
 }
