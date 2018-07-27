@@ -32,10 +32,5 @@ public class Vehiculo {
 	public void setTipo(String tipo) throws Exception {
 		this.tipo = tipo;
 	}
-	
-	// class utils 
-	
-	public boolean tipoEsValido() {
-		return this.tipo.equals("CARRO") || this.tipo.equals("MOTO");
-	}
+			
 }
