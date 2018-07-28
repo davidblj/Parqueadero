@@ -34,14 +34,14 @@ public class ParqueaderoApplication implements CommandLineRunner {
 		parqueaderoRepositorio.deleteAll();
 		vehiculoRepositorio.deleteAll();
 		
-		parqueaderoServicio.agregarParqueadero(
-				Constants.PARQUEADERO_CEIBA,
-				Constants.PARQUEADERO_CEIBA_LIMITE_CARROS, 
-				Constants.PARQUEADERO_CEIBA_LIMITE_MOTOS);
-		
 //		parqueaderoServicio.agregarParqueadero(
-//				Constants.PARQUEADERO_CEIBA, 
-//				0,
+//				Constants.PARQUEADERO_CEIBA,
+//				Constants.PARQUEADERO_CEIBA_LIMITE_CARROS, 
 //				Constants.PARQUEADERO_CEIBA_LIMITE_MOTOS);
+		
+		parqueaderoServicio.agregarParqueadero(
+				Constants.PARQUEADERO_CEIBA, 
+				1,
+				Constants.PARQUEADERO_CEIBA_LIMITE_MOTOS);
 	}	
 }

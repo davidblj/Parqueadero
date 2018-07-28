@@ -1,5 +1,6 @@
 package com.ceiba.induccion.vehiculos;
 
+import com.ceiba.induccion.utils.Constants;
 
 public class VehiculoModelo {
 	
@@ -25,5 +26,13 @@ public class VehiculoModelo {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}	
+	}
+	
+	public boolean esMoto() {
+		return this.tipo.equals(Constants.VEHICULO_MOTO);
+	}
+	
+	public boolean esCarro() {
+		return this.tipo.equals(Constants.VEHICULO_CARRO);
+	}
 }

@@ -7,9 +7,10 @@ public class VehiculoDTO {
 	
 	public VehiculoDTO() {}	
 
-	public VehiculoDTO(String placa) {
+	public VehiculoDTO(String placa, String tipo) {
 		super();
 		this.placa = placa;
+		this.tipo = tipo;
 	}
 
 	public String getPlaca() {

@@ -2,6 +2,6 @@ package com.ceiba.induccion.parqueadero;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ParqueaderoRepositorio extends MongoRepository<Parqueadero, String>{ 
-	public Parqueadero findOneByNombre(String nombre);
+public interface ParqueaderoRepositorio extends MongoRepository<ParqueaderoEntidad, String>{ 
+	public ParqueaderoEntidad findOneByNombre(String nombre);
 }

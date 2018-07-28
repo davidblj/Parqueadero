@@ -20,11 +20,11 @@ public class ParqueaderoServicio implements ImpParqueaderoServicio  {
 		// TODO: check syntax
 		// TODO: check length (clean code)
 		
-		Parqueadero parqueadero = repositorio.findOneByNombre(nombre);
+		ParqueaderoEntidad parqueadero = repositorio.findOneByNombre(nombre);
 		boolean parqueaderoEnExistencia = parqueadero != null;
 		
 		if (!parqueaderoEnExistencia) {			
-			parqueadero = new Parqueadero(nombre, carros, motos);		
+			parqueadero = new ParqueaderoEntidad(nombre, carros, motos);		
 			repositorio.save(parqueadero);
 		} else {
 			throw new ParametrosInvalidos("El parqueadero ya existe");
@@ -34,12 +34,12 @@ public class ParqueaderoServicio implements ImpParqueaderoServicio  {
 	@Override
 	public boolean estaDisponible(VehiculoModelo vehiculo) {				
 		
-		Parqueadero parqueadero = repositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA);
+		ParqueaderoEntidad parqueadero = repositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA);
 		return parqueaderoEstaDisponible(parqueadero, vehiculo.getTipo());			
 	}
 	
 	
-	private boolean parqueaderoEstaDisponible(Parqueadero parqueadero, String tipo) {
+	private boolean parqueaderoEstaDisponible(ParqueaderoEntidad parqueadero, String tipo) {
 		
 		// TODO: check types
 		// TODO: simplify (factory ?)

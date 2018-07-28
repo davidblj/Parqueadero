@@ -1,8 +1,10 @@
 package com.ceiba.induccion.parqueadero;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class Parqueadero {
+@Document(collection="parqueadero")
+public class ParqueaderoEntidad {
 
 	@Id
     private String id;	
@@ -13,9 +15,9 @@ public class Parqueadero {
 	private int limiteCarros;
 	private int limiteMotos;
 	
-	public Parqueadero() {}
+	public ParqueaderoEntidad() {}
 	
-	public Parqueadero(String nombre, int limiteCarros, int limiteMotos) {
+	public ParqueaderoEntidad(String nombre, int limiteCarros, int limiteMotos) {
 		this.nombre = nombre;
 		this.limiteCarros = limiteCarros;
 		this.limiteMotos = limiteMotos;
