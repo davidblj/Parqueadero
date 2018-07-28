@@ -26,10 +26,9 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 	@Override
 	public void agregarVehiculo(VehiculoDTO vehiculoDTO) throws ParametrosInvalidos {
 		
-		VehiculoModelo vehiculo = ApiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);
-		
-		// TODO: check existence
 		// TODO: check syntax
+		
+		VehiculoModelo vehiculo = ApiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);			
 		
 		for (ValidationRule rule: reglas.validacionesVehiculo()) {
 			rule.validate(vehiculo);
@@ -43,7 +42,10 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 	public VehiculoDTO consultarExistencia(String placa) {
 		
 		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placa);
-		return ApiBuilder.vehiculoEntidadToVehiculoDTO(vehiculo);
+		boolean vehiculoExiste = vehiculo != null;
+		
+		return vehiculoExiste ? ApiBuilder.vehiculoEntidadToVehiculoDTO(vehiculo): 
+								null;		
 	}
 	
 	private void liberarCeldaSegunVehiculo(VehiculoModelo vehiculo) {

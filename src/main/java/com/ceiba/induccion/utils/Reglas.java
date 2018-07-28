@@ -10,6 +10,7 @@ import com.ceiba.induccion.vehiculos.validaciones.PlacaValidacion;
 import com.ceiba.induccion.vehiculos.validaciones.TipoValidacion;
 import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
 import com.ceiba.induccion.vehiculos.validaciones.DisponibilidadValidacion;
+import com.ceiba.induccion.vehiculos.validaciones.ExistenciaValidacion;
 
 @Component
 public class Reglas {
@@ -17,11 +18,15 @@ public class Reglas {
 	@Autowired
 	private DisponibilidadValidacion disponibilidadValidacion;
 	
+	@Autowired
+	private ExistenciaValidacion existenciaValidacion;
+	
 	public List<ValidationRule> validacionesVehiculo() {
 		List<ValidationRule> reglas = new ArrayList<>();
 		reglas.add(new PlacaValidacion());
 		reglas.add(new TipoValidacion());
 		reglas.add(disponibilidadValidacion);
+		reglas.add(existenciaValidacion);
 		return reglas;
 	}
 }
