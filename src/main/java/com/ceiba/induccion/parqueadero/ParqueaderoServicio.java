@@ -5,7 +5,8 @@ import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.vehiculos.Vehiculo;
+import com.ceiba.induccion.vehiculos.VehiculoEntidad;
+import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
 public class ParqueaderoServicio implements ImpParqueaderoServicio  {
@@ -32,7 +33,7 @@ public class ParqueaderoServicio implements ImpParqueaderoServicio  {
 	}
 
 	@Override
-	public boolean estaDisponible(Vehiculo vehiculo) {				
+	public boolean estaDisponible(VehiculoModelo vehiculo) {				
 		
 		Parqueadero parqueadero = repositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA);
 		return parqueaderoEstaDisponible(parqueadero, vehiculo.getTipo());			

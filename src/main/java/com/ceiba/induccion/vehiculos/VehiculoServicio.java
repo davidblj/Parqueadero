@@ -5,11 +5,13 @@ import java.util.Calendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.induccion.excepciones.ErrorInterno;
+import com.ceiba.induccion.excepciones.Conflicto;
 import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.parqueadero.ParqueaderoServicio;
-import com.ceiba.induccion.utils.ApiDTOBuilder;
+import com.ceiba.induccion.utils.ApiBuilder;
 import com.ceiba.induccion.utils.Constants;
+import com.ceiba.induccion.utils.Reglas;
+import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
 
 @Component
 public class VehiculoServicio implements ImpVehiculoServicio {
@@ -23,44 +25,20 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 	@Override
 	public void agregarVehiculo(VehiculoDTO vehiculoDTO) throws ParametrosInvalidos {
 		
-		Vehiculo vehiculo = ApiDTOBuilder.VehiculoDTOToVehiculo(vehiculoDTO);
+		VehiculoModelo vehiculo = ApiBuilder.VehiculoDTOToVehiculo(vehiculoDTO);
 		
 		// TODO: check syntax
-		// TODO: check existence
-		String tipo = vehiculo.getTipo();
-		String placa = vehiculo.getPlaca();
+		// TODO: check existence	
 		
-		if (!tipoEsValido(tipo)) 
-			throw new ParametrosInvalidos("El tipo del vehiculo deberia ser CARRO o MOTO");
+		for (ValidationRule rule: Reglas.validacionesVehiculo()) {
+			rule.validate(vehiculo);
+		}
 		
 		if (!parqueaderoServicio.estaDisponible(vehiculo))
-			throw new ErrorInterno("El parqueadero esta lleno");
-		
-		if (!placaEsValida(placa)) {
-			
-		}
+			throw new Conflicto("El parqueadero esta lleno");					
 				
-		vehiculoRepositorio.save(vehiculo);
+		vehiculoRepositorio.save(ApiBuilder.VehiculoToVehiculoEntidad(vehiculo));
 		
 		// TODO: modify parking lot
-	}
-	
-	private boolean tipoEsValido(String tipo) {
-		return 	tipo.equals(Constants.VEHICULO_CARRO) || 
-				tipo.equals(Constants.VEHICULO_MOTO);
-	}
-	
-	private boolean placaEsValida(String placa) {				
-		char primeraLetra = placa.charAt(0);
-		boolean esLetra_A = primeraLetra == 'A';
-		return esLetra_A ? diaEsValido() : false;		
-	}
-	
-	private boolean diaEsValido() {
-		Calendar calendar = Calendar.getInstance();
-		int day = calendar.get(Calendar.DAY_OF_WEEK);
-		boolean esUnDiaHabil = 	day == Calendar.MONDAY || 
-								day == Calendar.SUNDAY ;
-		return esUnDiaHabil;
 	}
 }

@@ -1,8 +1,10 @@
 package com.ceiba.induccion.vehiculos;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class Vehiculo {
+@Document(collection="vehiculo")
+public class VehiculoEntidad {
 
 	@Id
     private String id;	
@@ -10,9 +12,9 @@ public class Vehiculo {
 	private String placa;
 	private String tipo;
 	
-	public Vehiculo() {}
+	public VehiculoEntidad() {}
 	
-	public Vehiculo(String placa, String tipo) { 
+	public VehiculoEntidad(String placa, String tipo) { 
 		this.placa = placa;
 		this.tipo = tipo;
 	}

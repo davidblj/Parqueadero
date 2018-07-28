@@ -66,12 +66,12 @@ public class VehiculoControladorTest {
     	
     	String placa = "WMQ756";
     	String tipo = "CARRO";
-    	Vehiculo vehiculo = new Vehiculo(placa, tipo);
+    	VehiculoEntidad vehiculo = new VehiculoEntidad(placa, tipo);
     	        						
 		mockMvc.perform(post("/api/1.0/parqueadero/vehiculos")
 				.content(this.json(vehiculo))
 				.contentType(contentType))
-				.andExpect(status().is(400));
+				.andExpect(status().is(409));
     }
     
     protected String json(Object object) throws IOException {

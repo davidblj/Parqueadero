@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ceiba.induccion.excepciones.ErrorInterno;
+import com.ceiba.induccion.excepciones.Conflicto;
+import com.ceiba.induccion.excepciones.ErrorInternoDelServidor;
 import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 
 @RestController
@@ -21,19 +22,17 @@ public class VehiculoControlador {
 	VehiculoServicio servicio;
 
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<?> crear(@RequestBody VehiculoDTO vehiculo) {
-		
-		// TODO: check error throwing
+	public ResponseEntity<?> crear(@RequestBody VehiculoDTO vehiculo) {	
 		
 		try {			
 			servicio.agregarVehiculo(vehiculo);
 			return ResponseEntity.accepted().body("");	
 			
 		} catch (ParametrosInvalidos e) {
-			return ResponseEntity.badRequest().body(e.getMessage());	
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());	
 			
-		} catch (ErrorInterno e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
+		} catch (Conflicto e) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
 		}
 	}
 }
