@@ -29,7 +29,7 @@ public class ParqueaderoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println("initiating config");
+		System.out.println("Initiating config");
 				
 		parqueaderoRepositorio.deleteAll();
 		vehiculoRepositorio.deleteAll();
@@ -39,6 +39,9 @@ public class ParqueaderoApplication implements CommandLineRunner {
 				Constants.PARQUEADERO_CEIBA_LIMITE_CARROS, 
 				Constants.PARQUEADERO_CEIBA_LIMITE_MOTOS);
 		
-		// parqueaderoServicio.agregarParqueadero(Constants.PARQUEADERO_CEIBA, 0, Constants.PARQUEADERO_CEIBA_MOTOS);
+//		parqueaderoServicio.agregarParqueadero(
+//				Constants.PARQUEADERO_CEIBA, 
+//				0,
+//				Constants.PARQUEADERO_CEIBA_LIMITE_MOTOS);
 	}	
 }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
@@ -45,13 +44,11 @@ public class ParqueaderoServicio implements ImpParqueaderoServicio  {
 		// TODO: check types
 		// TODO: simplify (factory ?)
 		
-		if (tipo.equals(Constants.VEHICULO_MOTO)) {
+		if (tipo.equals(Constants.VEHICULO_MOTO))
 			return parqueadero.getMotos() < parqueadero.getLimiteMotos(); 
-		}
 		
-		if (tipo.equals(Constants.VEHICULO_CARRO)) {
+		if (tipo.equals(Constants.VEHICULO_CARRO))
 			return parqueadero.getCarros() < parqueadero.getLimiteCarros(); 
-		}
 		
 		return false;		
 	}
