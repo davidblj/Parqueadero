@@ -21,12 +21,13 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 	private ParqueaderoRepositorio parqueaderoRepositorio;
 	
 	@Autowired
-	private Reglas reglas;
+	private Reglas reglas;	
 
 	@Override
 	public void agregarVehiculo(VehiculoDTO vehiculoDTO) throws ParametrosInvalidos {
 		
 		// TODO: check syntax
+		// TODO: check clean code
 		
 		VehiculoModelo vehiculo = ApiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);			
 		
@@ -47,6 +48,8 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 		return vehiculoExiste ? ApiBuilder.vehiculoEntidadToVehiculoDTO(vehiculo): 
 								null;		
 	}
+	
+	// utils
 	
 	private void liberarCeldaSegunVehiculo(VehiculoModelo vehiculo) {
 				

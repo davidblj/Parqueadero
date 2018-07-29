@@ -1,13 +1,22 @@
 package com.ceiba.induccion.parqueadero;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="parqueadero")
+// @Document(collection="parqueadero")
+@Entity
+@Table(name="parqueadero")
 public class ParqueaderoEntidad {
 
 	@Id
-    private String id;	
+	@GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;	
 	
 	private String nombre;
 	private int carros = 0;	
@@ -62,7 +71,4 @@ public class ParqueaderoEntidad {
 	public void setLimiteMotos(int limiteMotos) {
 		this.limiteMotos = limiteMotos;
 	}
-	
-	// utils
-	
 }

@@ -1,13 +1,21 @@
 package com.ceiba.induccion.vehiculos;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="vehiculo")
+// @Document(collection="vehiculo")
+@Entity
+@Table(name="vehiculo")
 public class VehiculoEntidad {
 
 	@Id
-    private String id;	
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
 	
 	private String placa;
 	private String tipo;
@@ -33,6 +41,5 @@ public class VehiculoEntidad {
 
 	public void setTipo(String tipo) throws Exception {
 		this.tipo = tipo;
-	}
-			
+	}			
 }
