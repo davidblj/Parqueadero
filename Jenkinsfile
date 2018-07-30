@@ -5,17 +5,17 @@ pipeline {
     	label 'Slave_Induccion'      
     }
 
-    //Opciones especÃ­ficas de Pipeline dentro del Pipeline
+    //Opciones especificas de Pipeline dentro del Pipeline
     options { 
         //Mantener artefactos y salida de consola para el # especÃ­fico de ejecucionesrecientes del Pipeline.
         buildDiscarder(logRotator(numToKeepStr: '3'))
         //No permitir ejecuciones concurrentes de PipelinedisableConcurrentBuilds()  
     }
 
-    //Una secciÃ³n que define las herramientas para â€œautoinstalarâ€� y poner en la PATH  tools 
+    //Una seccion que define las herramientas para autoinstalar y poner en la PATH  tools 
     tools {   
-        jdk 'JDK8_Centos' //Preinstalada en la ConfiguraciÃ³n del Master    
-        gradle 'Gradle4.5_Centos' //Preinstalada en la ConfiguraciÃ³n del Master  
+        jdk 'JDK8_Centos' //Preinstalada en la Configuracion del Master    
+        gradle 'Gradle4.5_Centos' //Preinstalada en la Configuracion del Master  
     }
 
     stages {
