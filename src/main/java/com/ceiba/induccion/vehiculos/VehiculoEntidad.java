@@ -6,9 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.data.mongodb.core.mapping.Document;
 
-// @Document(collection="vehiculo")
 @Entity
 @Table(name="vehiculo")
 public class VehiculoEntidad {
@@ -25,6 +23,10 @@ public class VehiculoEntidad {
 	public VehiculoEntidad(String placa, String tipo) { 
 		this.placa = placa;
 		this.tipo = tipo;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getPlaca() {

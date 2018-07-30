@@ -3,6 +3,7 @@ package com.ceiba.induccion.vehiculos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ceiba.induccion.excepciones.Conflicto;
 import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.parqueadero.ParqueaderoEntidad;
 import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
@@ -21,22 +22,25 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 	private ParqueaderoRepositorio parqueaderoRepositorio;
 	
 	@Autowired
-	private Reglas reglas;	
+	private Reglas reglas;
+	
+	@Autowired
+	private ApiBuilder apiBuilder;
 
 	@Override
-	public void agregarVehiculo(VehiculoDTO vehiculoDTO) throws ParametrosInvalidos {
+	public void agregarVehiculo(VehiculoDTO vehiculoDTO) throws ParametrosInvalidos, Conflicto {
 		
 		// TODO: check syntax
 		// TODO: check clean code
 		
-		VehiculoModelo vehiculo = ApiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);			
+		VehiculoModelo vehiculo = apiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);			
 		
 		for (ValidationRule rule: reglas.validacionesVehiculo()) {
 			rule.validate(vehiculo);
 		}		
-						
-		vehiculoRepositorio.save(ApiBuilder.vehiculoToVehiculoEntidad(vehiculo));
-		liberarCeldaSegunVehiculo(vehiculo);						
+
+		liberarCeldaSegunVehiculo(vehiculo);
+		vehiculoRepositorio.save(apiBuilder.vehiculoToVehiculoEntidad(vehiculo));
 	}
 	
 	@Override
@@ -45,13 +49,15 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placa);
 		boolean vehiculoExiste = vehiculo != null;
 		
-		return vehiculoExiste ? ApiBuilder.vehiculoEntidadToVehiculoDTO(vehiculo): 
-								null;		
+		return vehiculoExiste ? apiBuilder.vehiculoEntidadToVehiculoDTO(vehiculo): 
+								null;
 	}
 	
 	// utils
 	
 	private void liberarCeldaSegunVehiculo(VehiculoModelo vehiculo) {
+		
+		// TODO: research the entity class management
 				
 		ParqueaderoEntidad parqueadero = parqueaderoRepositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA);	
 		modificarParqueaderoSegunVehiculo(parqueadero, vehiculo);		

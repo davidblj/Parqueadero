@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos;
+package com.ceiba.induccion.vehiculos.integracion;
 
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -25,6 +25,7 @@ import org.springframework.util.SerializationUtils;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.ceiba.induccion.ParqueaderoApplication;
+import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ParqueaderoApplication.class)
