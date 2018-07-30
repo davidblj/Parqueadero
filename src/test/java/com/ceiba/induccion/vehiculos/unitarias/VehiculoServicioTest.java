@@ -32,9 +32,8 @@ import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class VehiculoServicioTest {
-
-	// TODO: test a successful registration
-	// TODO: verify MockBean
+	
+	// TODO: research a MockBean
 	
 	@Autowired
 	VehiculoServicio servicio;	 
