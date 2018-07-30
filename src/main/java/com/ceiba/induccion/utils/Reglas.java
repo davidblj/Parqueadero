@@ -21,10 +21,13 @@ public class Reglas {
 	@Autowired
 	private ExistenciaValidacion existenciaValidacion;
 	
+	@Autowired
+	private PlacaValidacion placaValidacion;
+	
 	public List<ValidationRule> validacionesVehiculo() {
-		List<ValidationRule> reglas = new ArrayList<>();
-		reglas.add(new PlacaValidacion());
+		List<ValidationRule> reglas = new ArrayList<>();		
 		reglas.add(new TipoValidacion());
+		reglas.add(placaValidacion);
 		reglas.add(disponibilidadValidacion);
 		reglas.add(existenciaValidacion);
 		return reglas;

@@ -1,7 +1,6 @@
 package com.ceiba.induccion.testdatabuilder;
 
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 public class VehiculoTestDataBuilder {
@@ -19,5 +18,15 @@ public class VehiculoTestDataBuilder {
 	
 	public VehiculoModelo build() {
 		return new VehiculoModelo(placa, tipo);
+	}
+	
+	public VehiculoTestDataBuilder conTipo(String tipo) {
+		this.tipo = tipo;
+		return this;
+	}
+	
+	public VehiculoTestDataBuilder conPlaca(String placa) {
+		this.placa = placa;
+		return this;
 	}
 }

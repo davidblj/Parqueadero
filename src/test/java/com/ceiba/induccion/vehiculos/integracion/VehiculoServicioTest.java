@@ -1,77 +1,160 @@
 package com.ceiba.induccion.vehiculos.integracion;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.fail;
+import static org.junit.Assert.assertThat;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ceiba.induccion.excepciones.Conflicto;
+import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.parqueadero.ParqueaderoEntidad;
-import com.ceiba.induccion.parqueadero.ParqueaderoModelo;
 import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
-import com.ceiba.induccion.testdatabuilder.ParqueaderoTestDataBuilder;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
-import com.ceiba.induccion.utils.ApiBuilder;
-import com.ceiba.induccion.utils.Reglas;
+import com.ceiba.induccion.utils.Calendario;
+import com.ceiba.induccion.utils.Constants;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
+import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.VehiculoServicio;
-import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
+@RunWith(SpringRunner.class)
+@AutoConfigureMockMvc
 public class VehiculoServicioTest {
-
+	
 	@Autowired
-	VehiculoServicio servicio;	 
+	VehiculoServicio servicio;
+	
+	@Autowired
+	private ParqueaderoRepositorio parqueaderoRepositorio;
+	
+	@Autowired
+	private VehiculoRepositorio vehiculoRepositorio;
 	
 	@MockBean
-	ApiBuilder apiBuilder;
+	private Calendario calendario;
 	
-	@MockBean
-	Reglas reglas;
+	// TODO: how can i mock without spring mockBean?	
 	
-	@MockBean
-	ParqueaderoRepositorio parqueaderoRepositorio;
-
-	@MockBean
-	VehiculoRepositorio vehiculoRepositorio;		
-	
-	// TODO: check type
-	// TODO: check available size 
-	// TODO: check repeated car
-	// TODO: check id and day
-	
-	@Test(expected = Test.None.class)
-	public void testAgregarVehiculoConTipoInvalido() {
+	@Before
+	public void SetUp() {
+		parqueaderoRepositorio.deleteAll();
+		vehiculoRepositorio.deleteAll();
 		
-		// TODO: converter availability ?
+		parqueaderoRepositorio.save(new ParqueaderoEntidad(
+				Constants.PARQUEADERO_CEIBA, 
+				Constants.PARQUEADERO_CEIBA_LIMITE_CARROS, 
+				Constants.PARQUEADERO_CEIBA_LIMITE_MOTOS));
+	}
+			
+	
+	@Test
+	public void testAgregarVehiculoConTipoInvalido() {		
 		
 		// arrange
+		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conTipo("desconocido").build();
+		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+				
+		try {
+			// act
+			servicio.agregarVehiculo(nuevoVehiculoDTO);
+			fail("Se esperaba una excepcion (ParametrosInvalidos)");
+			
+		} catch (ParametrosInvalidos e) {			
+			// assert
+			assertThat(e.getMessage(), is("El tipo del vehiculo deberia ser CARRO o MOTO"));
+		}								
+	}
+	
+		
+	@Test
+	public void testAgregarVehiculoConParqueaderoSinEspacio() {
+		
+		// arrange
+		ParqueaderoEntidad parqueadero = parqueaderoRepositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA);
+		parqueadero.setCarros(parqueadero.getLimiteCarros());
+		parqueaderoRepositorio.save(parqueadero);
+				
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().build();
 		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+				
+		try {
+			// act
+			servicio.agregarVehiculo(nuevoVehiculoDTO);
+			fail("Se esperaba una excepcion (Conflicto)");
+			
+		} catch (Conflicto e) {						
+			// assert
+			assertThat(e.getMessage(), is("El parqueadero esta lleno"));			
+		}								
+	}
+	
+	@Test
+	public void testAgregarVehiculoRepetido() {
 		
-		ParqueaderoModelo parqueadero = new ParqueaderoTestDataBuilder().build();
-		ParqueaderoEntidad parqueaderoEntidad =  new ParqueaderoEntidad(parqueadero.getNombre(),parqueadero.getLimiteCarros(), parqueadero.getLimiteMotos());
+		// arrange
+		VehiculoModelo vehiculoRepetido = new VehiculoTestDataBuilder().build();
+		VehiculoEntidad vehiculoRepetidoEntidad = new VehiculoEntidad(vehiculoRepetido.getPlaca(), vehiculoRepetido.getTipo()); 
+		vehiculoRepositorio.save(vehiculoRepetidoEntidad);
+						
+		VehiculoDTO vehiculoRepetidoDTO = new VehiculoDTO(vehiculoRepetido.getPlaca(), vehiculoRepetido.getTipo());
+				
+		try {
+			// act
+			servicio.agregarVehiculo(vehiculoRepetidoDTO);
+			fail("Se esperaba una excepcion (ParametrosInvalidoss)");
+			
+		} catch (ParametrosInvalidos e) {						
+			// assert
+			assertThat(e.getMessage(), is("El vehiculo que quieres ingresar ya se encuentra al interior del parqueadero"));
+		}								
+	}
+	
+	@Test
+	public void testAgregarVehiculoEnDiaInhabilitado() {
 		
-		when(apiBuilder.vehiculoDTOToVehiculo(any(VehiculoDTO.class))).thenReturn(nuevoVehiculo);					
-		when(parqueaderoRepositorio.findOneByNombre(anyString())).thenReturn(parqueaderoEntidad);		
-
-		// act
+		// arrange
+		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
+		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+		
+		int diaMartes= 3;
+		when(calendario.obtenerDiaActual()).thenReturn(diaMartes);
+		
+		try {
+			// act
+			servicio.agregarVehiculo(nuevoVehiculoDTO);
+			fail("Se esperaba una excepcion (Conflicto)");
+			
+		} catch (Conflicto e) {
+			// assert
+			assertThat(e.getMessage(), is("El vehiculo no puede ingresar los lunes y domingos"));
+		}
+	}
+	
+	@Test
+	public void agregarVehiculo() {
+		
+		// arrange
+		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conTipo("desconocido").build();
+		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+		
+		// act		
 		servicio.agregarVehiculo(nuevoVehiculoDTO);
-		
+
 		// assert
-		// no exception thrown expected (Test.none.class)
-	}	
+		// get vehicle
+	}
 }

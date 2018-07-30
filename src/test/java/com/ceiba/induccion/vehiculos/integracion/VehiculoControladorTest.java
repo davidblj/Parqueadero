@@ -72,7 +72,7 @@ public class VehiculoControladorTest {
 		mockMvc.perform(post("/api/1.0/parqueadero/vehiculos")
 				.content(this.json(vehiculo))
 				.contentType(contentType))
-				.andExpect(status().is(409));
+				.andExpect(status().is(202));
     }
     
     protected String json(Object object) throws IOException {
