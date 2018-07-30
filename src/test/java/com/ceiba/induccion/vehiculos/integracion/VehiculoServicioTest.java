@@ -4,15 +4,12 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.fail;
 import static org.junit.Assert.assertThat;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -32,7 +29,7 @@ import com.ceiba.induccion.vehiculos.VehiculoServicio;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@AutoConfigureMockMvc
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class VehiculoServicioTest {
 	
 	@Autowired
@@ -48,6 +45,7 @@ public class VehiculoServicioTest {
 	private Calendario calendario;
 	
 	// TODO: how can i mock without spring mockBean?	
+	// TODO: code duplication 
 	
 	@Before
 	public void SetUp() {
@@ -144,6 +142,7 @@ public class VehiculoServicioTest {
 		}
 	}
 	
+	/*
 	@Test
 	public void agregarVehiculo() {
 		
@@ -156,5 +155,5 @@ public class VehiculoServicioTest {
 
 		// assert
 		// get vehicle
-	}
+	}*/
 }
