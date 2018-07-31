@@ -19,17 +19,6 @@ pipeline {
     }
 
     stages {
-
-        stage('Checkout') {
-            steps { 
-                echo "------------>Checkout<------------"
-                checkout([$class: 'GitSCM', branches: [[name: '*/master', name: '*/develop']],
-                        doGenerateSubmoduleConfigurations: false, extensions: [], 
-                        gitTool:'Git_Centos',
-                        submoduleCfg: [], 
-                        userRemoteConfigs: [[credentialsId:'GitHub_davidblj', url:'https://github.com/davidblj/Parqueadero']]])            	
-            } 
-        }
         
         stage('Build') {      
             steps {       
