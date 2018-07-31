@@ -27,9 +27,7 @@ public class ParqueaderoApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
-		
-		System.out.println("Initiating config");
+	public void run(String... args) throws Exception {				
 				
 		parqueaderoRepositorio.deleteAll();
 		vehiculoRepositorio.deleteAll();
