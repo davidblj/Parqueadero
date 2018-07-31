@@ -35,7 +35,7 @@ pipeline {
         stage('Build') {      
             steps {       
                 echo "------------>Build<------------"                   
-                sh 'gradle build --stacktrace'
+                sh 'gradle build --stacktrace --scan'
             }
         }
 
