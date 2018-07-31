@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -30,6 +32,7 @@ import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ParqueaderoApplication.class)
 @WebAppConfiguration
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class VehiculoControladorTest {
 	
 	//TODO: remove 
