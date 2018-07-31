@@ -3,7 +3,9 @@ package com.ceiba.induccion.vehiculos.integracion;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +49,7 @@ public class VehiculoServicioTest {
 	
 	// TODO: how can i mock without spring mockBean?	
 	// TODO: code duplication 
+	// TODO: validarPlacaEnDiaHabilitado, validarPlacaSinRestriccionesHorarias
 	
 	@Before
 	public void SetUp() {
@@ -58,8 +61,7 @@ public class VehiculoServicioTest {
 				Constants.PARQUEADERO_CEIBA_LIMITE_CARROS, 
 				Constants.PARQUEADERO_CEIBA_LIMITE_MOTOS));
 	}
-			
-	
+				
 	@Test
 	public void testAgregarVehiculoConTipoInvalido() {		
 		
@@ -76,8 +78,7 @@ public class VehiculoServicioTest {
 			// assert
 			assertThat(e.getMessage(), is("El tipo del vehiculo deberia ser CARRO o MOTO"));
 		}								
-	}
-	
+	}	
 		
 	@Test
 	public void testAgregarVehiculoConParqueaderoSinEspacio() {
@@ -141,22 +142,23 @@ public class VehiculoServicioTest {
 			// assert
 			assertThat(e.getMessage(), is("El vehiculo no puede ingresar los lunes y domingos"));
 		}
-	}
-	
-	// TODO: validarPlacaEnDiaHabilitado, validarPlacaSinRestriccionesHorarias
-	
-	/*
+	}	
+		
 	@Test
 	public void agregarVehiculo() {
 		
 		// arrange
-		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conTipo("desconocido").build();
+		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().build();
 		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
 		
 		// act		
 		servicio.agregarVehiculo(nuevoVehiculoDTO);
 
-		// assert
-		// get vehicle
-	}*/
+		// assert		
+		VehiculoEntidad vehiculoIngresado = vehiculoRepositorio.findByPlaca(nuevoVehiculo.getPlaca());
+		ParqueaderoEntidad parqueaderoModificado = parqueaderoRepositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA); 
+		
+		boolean insercionExitosa = parqueaderoModificado.getCarros() == 1 && vehiculoIngresado != null;		
+		assertTrue(insercionExitosa);
+	}
 }
