@@ -27,12 +27,7 @@ public class PlacaValidacionTest {
 
 	@MockBean
 	Calendario calendario;
-	
-	@Before
-	public void setUp() {
-		
-	}
-	
+			
 	@Test
 	public void validarPlacaEnDiaInhabilitado() {
 		
@@ -47,7 +42,8 @@ public class PlacaValidacionTest {
 			placaValidacion.validate(vehiculo);
 			
 		} catch(Conflicto e) {
-						
+			
+			// assert
 			assertThat(e.getMessage(), is("El vehiculo no puede ingresar los lunes y domingos"));
 		}			
 	}

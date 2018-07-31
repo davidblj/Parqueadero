@@ -143,7 +143,7 @@ public class VehiculoServicioTest {
 		}
 	}
 	
-	// TODO: 
+	// TODO: validarPlacaEnDiaHabilitado, validarPlacaSinRestriccionesHorarias
 	
 	/*
 	@Test
