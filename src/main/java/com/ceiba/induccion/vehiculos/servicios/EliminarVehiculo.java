@@ -1,31 +1,42 @@
 package com.ceiba.induccion.vehiculos.servicios;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo.Reglas;
+import com.ceiba.induccion.utils.Calendario;
+import com.ceiba.induccion.vehiculos.FacturaDTO;
+import com.ceiba.induccion.vehiculos.VehiculoEntidad;
+import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo.ReglaEliminarVehiculo;
+import com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo.ReglasEliminarVehiculo;
+
 
 @Component
 public class EliminarVehiculo {
 	
 	@Autowired
-	private Reglas reglas;
+	private VehiculoRepositorio vehiculoRepositorio;
+	
+	@Autowired
+	private ReglasEliminarVehiculo reglas;
+	
+	@Autowired
+	private Calendario calendario;
 
-	public void ejecutar(String placa) {
+	public FacturaDTO ejecutar(String placa) {
 		
 		for (ReglaEliminarVehiculo rule: reglas.validacionesEliminarVehiculo()) {
 			rule.validate(placa);
 		}
+		
+		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placa);
+		float horasTranscurridas = calendario.calcularHorasTranscurridas(vehiculo.getFechaDeIngreso());				
 				
-		// TODO: get vehicle
-		// TODO: get hours 
-			// TODO: return the total of milliseconds 
-			// TODO: get current time
-			// TODO: return the total of milliseconds of the current time
-			// TODO: substract the total of milliseconds
-			// TODO: set those milliseconds into hours
-		// TODO: get price
+		// TODO: get price (using polymorphism)
 		// TODO: prepare response object
-	}
+		
+		return new FacturaDTO(0, 0, horasTranscurridas);
+	}	
 }

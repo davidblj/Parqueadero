@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Reglas {
+public class ReglasEliminarVehiculo {
 	
 	public List<ReglaEliminarVehiculo> validacionesEliminarVehiculo() {
 		List<ReglaEliminarVehiculo> reglas = new ArrayList<>();

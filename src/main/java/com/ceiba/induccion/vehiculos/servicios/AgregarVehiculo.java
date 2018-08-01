@@ -12,7 +12,7 @@ import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglaAgregarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.Reglas;
+import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglasAgregarVehiculo;
 
 
 @Component
@@ -25,7 +25,7 @@ public class AgregarVehiculo {
 	private ParqueaderoRepositorio parqueaderoRepositorio;
 	
 	@Autowired
-	private Reglas reglas;
+	private ReglasAgregarVehiculo reglas;
 	
 	@Autowired
 	private ApiBuilder apiBuilder;

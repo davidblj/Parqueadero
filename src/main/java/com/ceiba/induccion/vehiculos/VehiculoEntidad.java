@@ -20,8 +20,8 @@ public class VehiculoEntidad {
     private Long id;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fechaDeIngreso;
-	
+	private Calendar fechaDeIngreso;	
+
 	private String placa;
 	private String tipo;
 	private int cilindraje;
@@ -61,5 +61,9 @@ public class VehiculoEntidad {
 
 	public void setCilindraje(int cilindraje) {
 		this.cilindraje = cilindraje;
+	}
+	
+	public Calendar getFechaDeIngreso() {
+		return fechaDeIngreso;
 	}
 }

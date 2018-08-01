@@ -29,7 +29,7 @@ import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
 import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglaAgregarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.Reglas;
+import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglasAgregarVehiculo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -43,7 +43,7 @@ public class VehiculoServicioTest {
 	ApiBuilder apiBuilder;
 	
 	@MockBean
-	Reglas reglas;
+	ReglasAgregarVehiculo reglas;
 	
 	@MockBean
 	ParqueaderoRepositorio parqueaderoRepositorio;
