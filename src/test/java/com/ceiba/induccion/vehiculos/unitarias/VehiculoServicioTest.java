@@ -61,7 +61,7 @@ public class VehiculoServicioTest {
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().build();
-		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo(), nuevoVehiculo.getCilindraje());
 		
 		ParqueaderoModelo parqueadero = new ParqueaderoTestDataBuilder().build();
 		ParqueaderoEntidad parqueaderoEntidad =  new ParqueaderoEntidad(parqueadero.getNombre(),parqueadero.getLimiteCarros(), parqueadero.getLimiteMotos());

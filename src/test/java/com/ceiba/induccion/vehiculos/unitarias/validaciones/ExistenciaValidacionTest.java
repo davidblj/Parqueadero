@@ -37,7 +37,7 @@ public class ExistenciaValidacionTest {
 	
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();
-		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(vehiculo.getPlaca(), vehiculo.getTipo());
+		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
 		when(obtenerVehiculo.ejecutar(anyString())).thenReturn(nuevoVehiculoDTO);
 		
 		try {

@@ -17,12 +17,16 @@ public class VehiculoEntidad {
 	
 	private String placa;
 	private String tipo;
+	private int cilindraje;
 	
+	// private Date fechaDeIngreso		
+
 	public VehiculoEntidad() {}
 	
-	public VehiculoEntidad(String placa, String tipo) { 
+	public VehiculoEntidad(String placa, String tipo, int cilindraje) { 
 		this.placa = placa;
 		this.tipo = tipo;
+		this.cilindraje = cilindraje;
 	}
 	
 	public Long getId() {
@@ -43,5 +47,13 @@ public class VehiculoEntidad {
 
 	public void setTipo(String tipo) throws Exception {
 		this.tipo = tipo;
-	}			
+	}
+	
+	public int getCilindraje() {
+		return cilindraje;
+	}
+
+	public void setCilindraje(int cilindraje) {
+		this.cilindraje = cilindraje;
+	}
 }

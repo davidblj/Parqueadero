@@ -7,9 +7,11 @@ public class VehiculoTestDataBuilder {
 
 	private static final String PLACA = "WMQ999";
 	private static final String TIPO = Constants.VEHICULO_CARRO;
+	private static final int CILINDRAJE = 0;
 	
 	private String placa;
 	private String tipo;
+	private int cilindraje;
 	
 	public VehiculoTestDataBuilder() {
 		this.placa = PLACA;
@@ -17,7 +19,7 @@ public class VehiculoTestDataBuilder {
 	}
 	
 	public VehiculoModelo build() {
-		return new VehiculoModelo(placa, tipo);
+		return new VehiculoModelo(placa, tipo, cilindraje);
 	}
 	
 	public VehiculoTestDataBuilder conTipo(String tipo) {

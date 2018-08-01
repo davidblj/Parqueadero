@@ -34,12 +34,17 @@ public class AgregarVehiculo {
 		
 		// TODO: check syntax
 		// TODO: check clean code
+		
+		// TODO: CC validation 
 				
 		VehiculoModelo vehiculo = apiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);			
 		
 		for (ValidationRule rule: reglas.validacionesVehiculo()) {
 			rule.validate(vehiculo);
-		}		
+		}
+		
+		// TODO: set CC
+		// TODO: set time
 
 		liberarCeldaSegunVehiculo(vehiculo);
 		vehiculoRepositorio.save(apiBuilder.vehiculoToVehiculoEntidad(vehiculo));

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.ceiba.induccion.vehiculos.validaciones.PlacaValidacion;
 import com.ceiba.induccion.vehiculos.validaciones.TipoValidacion;
 import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
+import com.ceiba.induccion.vehiculos.validaciones.CilindrajeValidacion;
 import com.ceiba.induccion.vehiculos.validaciones.DisponibilidadValidacion;
 import com.ceiba.induccion.vehiculos.validaciones.ExistenciaValidacion;
 
@@ -27,6 +28,7 @@ public class Reglas {
 	public List<ValidationRule> validacionesVehiculo() {
 		List<ValidationRule> reglas = new ArrayList<>();		
 		reglas.add(new TipoValidacion());
+		reglas.add(new CilindrajeValidacion());
 		reglas.add(placaValidacion);
 		reglas.add(disponibilidadValidacion);
 		reglas.add(existenciaValidacion);

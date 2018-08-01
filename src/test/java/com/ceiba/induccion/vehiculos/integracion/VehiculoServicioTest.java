@@ -66,7 +66,7 @@ public class VehiculoServicioTest {
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conTipo("desconocido").build();
-		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo(), nuevoVehiculo.getCilindraje());
 				
 		try {
 			// act
@@ -89,7 +89,7 @@ public class VehiculoServicioTest {
 		parqueaderoRepositorio.save(parqueadero);
 				
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().build();
-		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo(), nuevoVehiculo.getCilindraje());
 				
 		try {
 			// act
@@ -107,10 +107,10 @@ public class VehiculoServicioTest {
 		
 		// arrange
 		VehiculoModelo vehiculoRepetido = new VehiculoTestDataBuilder().build();
-		VehiculoEntidad vehiculoRepetidoEntidad = new VehiculoEntidad(vehiculoRepetido.getPlaca(), vehiculoRepetido.getTipo()); 
+		VehiculoEntidad vehiculoRepetidoEntidad = new VehiculoEntidad(vehiculoRepetido.getPlaca(), vehiculoRepetido.getTipo(), vehiculoRepetido.getCilindraje()); 
 		vehiculoRepositorio.save(vehiculoRepetidoEntidad);
 						
-		VehiculoDTO vehiculoRepetidoDTO = new VehiculoDTO(vehiculoRepetido.getPlaca(), vehiculoRepetido.getTipo());
+		VehiculoDTO vehiculoRepetidoDTO = new VehiculoDTO(vehiculoRepetido.getPlaca(), vehiculoRepetido.getTipo(), vehiculoRepetido.getCilindraje());
 				
 		try {
 			// act			
@@ -128,7 +128,7 @@ public class VehiculoServicioTest {
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
-		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo(), nuevoVehiculo.getCilindraje());
 		
 		int diaMartes = 3;
 		when(calendario.obtenerDiaActual()).thenReturn(diaMartes);
@@ -149,7 +149,7 @@ public class VehiculoServicioTest {
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
-		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo(), nuevoVehiculo.getCilindraje());
 		
 		int diaLunes = 1;
 		when(calendario.obtenerDiaActual()).thenReturn(diaLunes);
@@ -169,7 +169,7 @@ public class VehiculoServicioTest {
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().build();
-		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo(), nuevoVehiculo.getCilindraje());
 		
 		// act
 		agregarVehiculo.ejecutar(nuevoVehiculoDTO);		

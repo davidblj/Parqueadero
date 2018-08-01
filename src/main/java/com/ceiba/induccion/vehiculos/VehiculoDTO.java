@@ -3,14 +3,16 @@ package com.ceiba.induccion.vehiculos;
 public class VehiculoDTO {
 
 	private String placa;
-	private String tipo;
+	private String tipo;	
+	private int cilindraje;
 	
 	public VehiculoDTO() {}	
 
-	public VehiculoDTO(String placa, String tipo) {
+	public VehiculoDTO(String placa, String tipo, int cilindraje) {
 		super();
 		this.placa = placa;
 		this.tipo = tipo;
+		this.cilindraje = cilindraje;
 	}
 
 	public String getPlaca() {
@@ -27,5 +29,13 @@ public class VehiculoDTO {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	
+	public int getCilindraje() {
+		return cilindraje;
+	}
+
+	public void setCilindraje(int cilindraje) {
+		this.cilindraje = cilindraje;
 	}
 }

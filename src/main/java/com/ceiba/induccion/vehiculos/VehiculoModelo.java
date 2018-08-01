@@ -6,10 +6,14 @@ public class VehiculoModelo {
 
 	String placa;
 	String tipo;
-
-	public VehiculoModelo(String placa, String tipo) {
+	int cilindraje;
+	
+	// private Date fechaDeIngreso
+	
+	public VehiculoModelo(String placa, String tipo, int cilindraje) {
 		this.placa = placa;
 		this.tipo = tipo;
+		this.cilindraje = cilindraje;
 	}
 
 	public String getPlaca() {
@@ -27,7 +31,15 @@ public class VehiculoModelo {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public int getCilindraje() {
+		return cilindraje;
+	}
 
+	public void setCilindraje(int cilindraje) {
+		this.cilindraje = cilindraje;
+	}
+	
 	public boolean esMoto() {
 		return this.tipo.equals(Constants.VEHICULO_MOTO);
 	}
@@ -35,4 +47,6 @@ public class VehiculoModelo {
 	public boolean esCarro() {
 		return this.tipo.equals(Constants.VEHICULO_CARRO);
 	}
+	
+	// cilindraje > 550 (con herencia)
 }

@@ -10,15 +10,15 @@ import com.ceiba.induccion.vehiculos.VehiculoDTO;
 @Component
 public class ApiBuilder {
 	
-	public VehiculoModelo vehiculoDTOToVehiculo(VehiculoDTO vehiculo) {
-		return new VehiculoModelo(vehiculo.getPlaca(), vehiculo.getTipo());
+	public VehiculoModelo vehiculoDTOToVehiculo(VehiculoDTO vehiculo) {		
+		return new VehiculoModelo(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
 	}
 	
 	public VehiculoEntidad vehiculoToVehiculoEntidad(VehiculoModelo vehiculo) {
-		return new VehiculoEntidad(vehiculo.getPlaca(), vehiculo.getTipo());
+		return new VehiculoEntidad(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
 	}
 	
 	public VehiculoDTO vehiculoEntidadToVehiculoDTO(VehiculoEntidad vehiculo) {
-		return new VehiculoDTO(vehiculo.getPlaca(), vehiculo.getTipo());
+		return new VehiculoDTO(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
 	}
 }
