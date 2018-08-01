@@ -18,7 +18,7 @@ import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.servicios.VehiculoServicio;
+import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
 import com.ceiba.induccion.vehiculos.validaciones.ExistenciaValidacion;
 
 @SpringBootTest
@@ -27,10 +27,10 @@ import com.ceiba.induccion.vehiculos.validaciones.ExistenciaValidacion;
 public class ExistenciaValidacionTest {
 	
 	@Autowired
-	ExistenciaValidacion existenciaValidacion;
+	ExistenciaValidacion existenciaValidacion;	
 	
 	@MockBean
-	VehiculoServicio vehiculoServicio;
+	ObtenerVehiculo obtenerVehiculo;
 	
 	@Test
 	public void validarVehiculoEnExistencia() {
@@ -38,7 +38,7 @@ public class ExistenciaValidacionTest {
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();
 		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(vehiculo.getPlaca(), vehiculo.getTipo());
-		when(vehiculoServicio.consultarExistencia(anyString())).thenReturn(nuevoVehiculoDTO);
+		when(obtenerVehiculo.ejecutar(anyString())).thenReturn(nuevoVehiculoDTO);
 		
 		try {
 			// act
@@ -55,7 +55,7 @@ public class ExistenciaValidacionTest {
 	
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();		
-		when(vehiculoServicio.consultarExistencia(anyString())).thenReturn(null);
+		when(obtenerVehiculo.ejecutar(anyString())).thenReturn(null);
 			
 		// act
 		existenciaValidacion.validate(vehiculo);			

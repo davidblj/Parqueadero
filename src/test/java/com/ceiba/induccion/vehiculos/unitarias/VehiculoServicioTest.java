@@ -28,7 +28,7 @@ import com.ceiba.induccion.utils.Reglas;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
-import com.ceiba.induccion.vehiculos.servicios.VehiculoServicio;
+import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
 import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
 
 @RunWith(SpringRunner.class)
@@ -36,10 +36,10 @@ import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class VehiculoServicioTest {
 	
-	// TODO: research a MockBean
+	// TODO: research a MockBean		
 	
 	@Autowired
-	VehiculoServicio servicio;	 
+	AgregarVehiculo agregarVehiculo;	
 	
 	@MockBean
 	ApiBuilder apiBuilder;
@@ -75,8 +75,8 @@ public class VehiculoServicioTest {
 		when(reglas.validacionesVehiculo()).thenReturn(validaciones);				
 		when(parqueaderoRepositorio.findOneByNombre(anyString())).thenReturn(parqueaderoEntidad);		
 
-		// act
-		servicio.agregarVehiculo(nuevoVehiculoDTO);
+		// act		
+		agregarVehiculo.ejecutar(nuevoVehiculoDTO);
 		
 		// assert
 		// no exception thrown expected (Test.none.class)

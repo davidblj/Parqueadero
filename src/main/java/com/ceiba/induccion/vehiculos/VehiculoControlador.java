@@ -13,21 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ceiba.induccion.excepciones.Conflicto;
 import com.ceiba.induccion.excepciones.ErrorInternoDelServidor;
 import com.ceiba.induccion.excepciones.ParametrosInvalidos;
-import com.ceiba.induccion.vehiculos.servicios.VehiculoServicio;
+import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
+import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
 
 @RestController
 @RequestMapping("/api/1.0/parqueadero/vehiculos")
 @CrossOrigin
-public class VehiculoControlador {
+public class VehiculoControlador {	
 	
 	@Autowired
-	VehiculoServicio servicio;
+	AgregarVehiculo agregarVehiculo;
+	
+	@Autowired
+	ObtenerVehiculo obtenerVehiculo;
 
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public ResponseEntity<?> crear(@RequestBody VehiculoDTO vehiculo) {	
 		
 		try {			
-			servicio.agregarVehiculo(vehiculo);
+			agregarVehiculo.ejecutar(vehiculo);
 			return ResponseEntity.accepted().body("");	
 			
 		} catch (ParametrosInvalidos e) {
@@ -41,7 +45,7 @@ public class VehiculoControlador {
 	@RequestMapping(value="{placa}", method=RequestMethod.GET, produces="application/json")
 	public ResponseEntity<?> consultar(@PathVariable String placa) {
 		
-		VehiculoDTO vehiculo = servicio.consultarExistencia(placa);
+		VehiculoDTO vehiculo = obtenerVehiculo.ejecutar(placa);
 		return ResponseEntity.status(HttpStatus.OK).body(vehiculo);
 	}
 }

@@ -3,7 +3,6 @@ package com.ceiba.induccion.vehiculos.integracion;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -28,15 +27,16 @@ import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
-import com.ceiba.induccion.vehiculos.servicios.VehiculoServicio;
+import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class VehiculoServicioTest {
 	
+	
 	@Autowired
-	VehiculoServicio servicio;
+	private AgregarVehiculo agregarVehiculo;
 	
 	@Autowired
 	private ParqueaderoRepositorio parqueaderoRepositorio;
@@ -70,7 +70,8 @@ public class VehiculoServicioTest {
 				
 		try {
 			// act
-			servicio.agregarVehiculo(nuevoVehiculoDTO);
+			// servicio.agregarVehiculo(nuevoVehiculoDTO);
+			agregarVehiculo.ejecutar(nuevoVehiculoDTO);
 			fail("Se esperaba una excepcion (ParametrosInvalidos)");
 			
 		} catch (ParametrosInvalidos e) {			
@@ -92,7 +93,7 @@ public class VehiculoServicioTest {
 				
 		try {
 			// act
-			servicio.agregarVehiculo(nuevoVehiculoDTO);
+			agregarVehiculo.ejecutar(nuevoVehiculoDTO);
 			fail("Se esperaba una excepcion (Conflicto)");
 			
 		} catch (Conflicto e) {						
@@ -112,8 +113,8 @@ public class VehiculoServicioTest {
 		VehiculoDTO vehiculoRepetidoDTO = new VehiculoDTO(vehiculoRepetido.getPlaca(), vehiculoRepetido.getTipo());
 				
 		try {
-			// act
-			servicio.agregarVehiculo(vehiculoRepetidoDTO);
+			// act			
+			agregarVehiculo.ejecutar(vehiculoRepetidoDTO);
 			fail("Se esperaba una excepcion (ParametrosInvalidoss)");
 			
 		} catch (ParametrosInvalidos e) {						
@@ -133,8 +134,8 @@ public class VehiculoServicioTest {
 		when(calendario.obtenerDiaActual()).thenReturn(diaMartes);
 		
 		try {
-			// act
-			servicio.agregarVehiculo(nuevoVehiculoDTO);
+			// act			
+			agregarVehiculo.ejecutar(nuevoVehiculoDTO);
 			fail("Se esperaba una excepcion (Conflicto)");
 			
 		} catch (Conflicto e) {
@@ -154,7 +155,7 @@ public class VehiculoServicioTest {
 		when(calendario.obtenerDiaActual()).thenReturn(diaLunes);
 				
 		// act
-		servicio.agregarVehiculo(nuevoVehiculoDTO);
+		agregarVehiculo.ejecutar(nuevoVehiculoDTO);		
 			
 		// assert
 		VehiculoEntidad vehiculoIngresado = vehiculoRepositorio.findByPlaca(nuevoVehiculo.getPlaca());
@@ -170,8 +171,8 @@ public class VehiculoServicioTest {
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().build();
 		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
 		
-		// act		
-		servicio.agregarVehiculo(nuevoVehiculoDTO);
+		// act
+		agregarVehiculo.ejecutar(nuevoVehiculoDTO);		
 
 		// assert		
 		VehiculoEntidad vehiculoIngresado = vehiculoRepositorio.findByPlaca(nuevoVehiculo.getPlaca());
