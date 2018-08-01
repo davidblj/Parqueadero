@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ceiba.induccion.excepciones.Conflicto;
 import com.ceiba.induccion.excepciones.ErrorInternoDelServidor;
 import com.ceiba.induccion.excepciones.ParametrosInvalidos;
+import com.ceiba.induccion.vehiculos.servicios.VehiculoServicio;
 
 @RestController
 @RequestMapping("/api/1.0/parqueadero/vehiculos")

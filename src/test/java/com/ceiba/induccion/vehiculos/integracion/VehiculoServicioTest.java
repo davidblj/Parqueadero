@@ -28,7 +28,7 @@ import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
-import com.ceiba.induccion.vehiculos.VehiculoServicio;
+import com.ceiba.induccion.vehiculos.servicios.VehiculoServicio;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -49,7 +49,6 @@ public class VehiculoServicioTest {
 	
 	// TODO: how can i mock without spring mockBean?	
 	// TODO: code duplication 
-	// TODO: validarPlacaEnDiaHabilitado, validarPlacaSinRestriccionesHorarias
 	
 	@Before
 	public void SetUp() {
@@ -130,7 +129,7 @@ public class VehiculoServicioTest {
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
 		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
 		
-		int diaMartes= 3;
+		int diaMartes = 3;
 		when(calendario.obtenerDiaActual()).thenReturn(diaMartes);
 		
 		try {
@@ -142,7 +141,27 @@ public class VehiculoServicioTest {
 			// assert
 			assertThat(e.getMessage(), is("El vehiculo no puede ingresar los lunes y domingos"));
 		}
-	}	
+	}
+	
+	@Test
+	public void testAgregarVehiculoEnDiaAbilitado() {
+		
+		// arrange
+		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
+		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo());
+		
+		int diaLunes = 1;
+		when(calendario.obtenerDiaActual()).thenReturn(diaLunes);
+				
+		// act
+		servicio.agregarVehiculo(nuevoVehiculoDTO);
+			
+		// assert
+		VehiculoEntidad vehiculoIngresado = vehiculoRepositorio.findByPlaca(nuevoVehiculo.getPlaca());
+		boolean insercionExitosa = vehiculoIngresado.getPlaca() == nuevoVehiculo.getPlaca();
+		
+		assertTrue(insercionExitosa);
+	}			
 		
 	@Test
 	public void agregarVehiculo() {

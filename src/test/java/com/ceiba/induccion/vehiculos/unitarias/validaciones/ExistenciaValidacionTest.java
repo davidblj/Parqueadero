@@ -18,7 +18,7 @@ import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.VehiculoServicio;
+import com.ceiba.induccion.vehiculos.servicios.VehiculoServicio;
 import com.ceiba.induccion.vehiculos.validaciones.ExistenciaValidacion;
 
 @SpringBootTest

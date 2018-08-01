@@ -7,7 +7,7 @@ import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.parqueadero.ParqueaderoServicio;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.VehiculoServicio;
+import com.ceiba.induccion.vehiculos.servicios.VehiculoServicio;
 
 @Component
 public class ExistenciaValidacion implements ValidationRule {

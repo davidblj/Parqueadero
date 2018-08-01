@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos;
+package com.ceiba.induccion.vehiculos.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,6 +10,11 @@ import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
 import com.ceiba.induccion.utils.ApiBuilder;
 import com.ceiba.induccion.utils.Constants;
 import com.ceiba.induccion.utils.Reglas;
+import com.ceiba.induccion.vehiculos.ImpVehiculoServicio;
+import com.ceiba.induccion.vehiculos.VehiculoDTO;
+import com.ceiba.induccion.vehiculos.VehiculoEntidad;
+import com.ceiba.induccion.vehiculos.VehiculoModelo;
+import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
 
 @Component
