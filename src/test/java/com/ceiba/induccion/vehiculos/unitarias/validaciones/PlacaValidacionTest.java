@@ -18,7 +18,7 @@ import com.ceiba.induccion.excepciones.Conflicto;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.validaciones.PlacaValidacion;
+import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.PlacaValidacion;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

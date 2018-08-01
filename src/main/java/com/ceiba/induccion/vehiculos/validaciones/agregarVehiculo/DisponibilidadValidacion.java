@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones;
+package com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import com.ceiba.induccion.parqueadero.ParqueaderoServicio;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
-public class DisponibilidadValidacion implements ValidationRule {
+public class DisponibilidadValidacion implements ReglaAgregarVehiculo {
 
 	@Autowired
 	private ParqueaderoServicio parqueaderoServicio;

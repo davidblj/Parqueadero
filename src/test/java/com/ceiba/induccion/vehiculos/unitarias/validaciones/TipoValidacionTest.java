@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.validaciones.TipoValidacion;
+import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.TipoValidacion;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

@@ -8,11 +8,11 @@ import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
 import com.ceiba.induccion.utils.ApiBuilder;
 import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.utils.Reglas;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
-import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
+import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglaAgregarVehiculo;
+import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.Reglas;
 
 
 @Component
@@ -40,7 +40,7 @@ public class AgregarVehiculo {
 				
 		VehiculoModelo vehiculo = apiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);			
 		
-		for (ValidationRule rule: reglas.validacionesVehiculo()) {
+		for (ReglaAgregarVehiculo rule: reglas.validacionesAgregarVehiculo()) {
 			rule.validate(vehiculo);
 		}
 		

@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones;
+package com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo;
 
 import java.util.Calendar;
 
@@ -10,7 +10,7 @@ import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
-public class PlacaValidacion implements ValidationRule {
+public class PlacaValidacion implements ReglaAgregarVehiculo {
 	
 	@Autowired
 	Calendario calendario;

@@ -24,19 +24,17 @@ import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
 import com.ceiba.induccion.testdatabuilder.ParqueaderoTestDataBuilder;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.ApiBuilder;
-import com.ceiba.induccion.utils.Reglas;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.ValidationRule;
+import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglaAgregarVehiculo;
+import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.Reglas;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class VehiculoServicioTest {
-	
-	// TODO: research a MockBean		
+public class VehiculoServicioTest {	
 	
 	@Autowired
 	AgregarVehiculo agregarVehiculo;	
@@ -58,6 +56,7 @@ public class VehiculoServicioTest {
 	public void testAgregarVehiculo() {
 		
 		// TODO: converter availability ?
+		// TODO: mock the calendar getInstance implementation
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().build();
@@ -66,13 +65,13 @@ public class VehiculoServicioTest {
 		ParqueaderoModelo parqueadero = new ParqueaderoTestDataBuilder().build();
 		ParqueaderoEntidad parqueaderoEntidad =  new ParqueaderoEntidad(parqueadero.getNombre(),parqueadero.getLimiteCarros(), parqueadero.getLimiteMotos());
 		
-		List<ValidationRule> validaciones = new ArrayList<>();		
-		ValidationRule mockDeValidacion = mock(ValidationRule.class);
+		List<ReglaAgregarVehiculo> validaciones = new ArrayList<>();		
+		ReglaAgregarVehiculo mockDeValidacion = mock(ReglaAgregarVehiculo.class);
 		doNothing().when(mockDeValidacion).validate(any(VehiculoModelo.class));
 		validaciones.add(mockDeValidacion);
 		
 		when(apiBuilder.vehiculoDTOToVehiculo(any(VehiculoDTO.class))).thenReturn(nuevoVehiculo);
-		when(reglas.validacionesVehiculo()).thenReturn(validaciones);				
+		when(reglas.validacionesAgregarVehiculo()).thenReturn(validaciones);				
 		when(parqueaderoRepositorio.findOneByNombre(anyString())).thenReturn(parqueaderoEntidad);		
 
 		// act		

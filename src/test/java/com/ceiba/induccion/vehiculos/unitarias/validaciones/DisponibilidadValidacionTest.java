@@ -20,7 +20,7 @@ import com.ceiba.induccion.excepciones.Conflicto;
 import com.ceiba.induccion.parqueadero.ParqueaderoServicio;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.validaciones.DisponibilidadValidacion;
+import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.DisponibilidadValidacion;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

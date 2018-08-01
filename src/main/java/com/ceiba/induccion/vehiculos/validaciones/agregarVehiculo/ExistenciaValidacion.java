@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones;
+package com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
 
 @Component
-public class ExistenciaValidacion implements ValidationRule {	
+public class ExistenciaValidacion implements ReglaAgregarVehiculo {	
 		
 	@Autowired
 	ObtenerVehiculo obtenerVehiculo;
@@ -22,5 +22,5 @@ public class ExistenciaValidacion implements ValidationRule {
 		
 		if (vehiculoExiste)
 			throw new ParametrosInvalidos("El vehiculo que quieres ingresar ya se encuentra al interior del parqueadero");
-	}
+	}	
 }

@@ -1,9 +1,9 @@
-package com.ceiba.induccion.vehiculos.validaciones;
+package com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo;
 
 import com.ceiba.induccion.excepciones.Conflicto;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
-public class CilindrajeValidacion implements ValidationRule {
+public class CilindrajeValidacion implements ReglaAgregarVehiculo {
 
 	@Override
 	public void validate(VehiculoModelo data) {

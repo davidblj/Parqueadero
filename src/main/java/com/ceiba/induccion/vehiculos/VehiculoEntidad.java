@@ -24,10 +24,8 @@ public class VehiculoEntidad {
 	
 	private String placa;
 	private String tipo;
-	private int cilindraje;	 
+	private int cilindraje;
 	
-	// private Date fechaDeIngreso		
-
 	public VehiculoEntidad() {}
 	
 	public VehiculoEntidad(String placa, String tipo, int cilindraje, Calendar fechaDeIngreso) { 
