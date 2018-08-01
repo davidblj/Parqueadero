@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import com.ceiba.induccion.parqueadero.ParqueaderoEntidad;
 import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
 import com.ceiba.induccion.utils.ApiBuilder;
+import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.utils.Constants;
 import com.ceiba.induccion.utils.Reglas;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
@@ -29,13 +30,13 @@ public class AgregarVehiculo {
 	@Autowired
 	private ApiBuilder apiBuilder;
 	
-	
+	@Autowired
+	private Calendario calendario;
+		
 	public void ejecutar(VehiculoDTO vehiculoDTO) {
 		
 		// TODO: check syntax
-		// TODO: check clean code
-		
-		// TODO: CC validation 
+		// TODO: check clean code		
 				
 		VehiculoModelo vehiculo = apiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);			
 		
@@ -43,11 +44,16 @@ public class AgregarVehiculo {
 			rule.validate(vehiculo);
 		}
 		
-		// TODO: set CC
-		// TODO: set time
-
+		agregarFechaDeIngreso(vehiculo);
 		liberarCeldaSegunVehiculo(vehiculo);
 		vehiculoRepositorio.save(apiBuilder.vehiculoToVehiculoEntidad(vehiculo));
+	}
+	
+	// utils
+	
+	private void agregarFechaDeIngreso(VehiculoModelo vehiculo) {
+		
+		vehiculo.setFechaDeIngreso(calendario.obtenerFechaAcual());
 	}
 	
 	private void liberarCeldaSegunVehiculo(VehiculoModelo vehiculo) {

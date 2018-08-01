@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 public class Calendario {
 	
 	public int obtenerDiaActual() {
-		return obtenerCalendario().get(Calendar.DAY_OF_WEEK);
+		return obtenerFechaAcual().get(Calendar.DAY_OF_WEEK);
 	}
 
-	public Calendar obtenerCalendario() {
+	public Calendar obtenerFechaAcual() {
 		return Calendar.getInstance();
 	}
 }

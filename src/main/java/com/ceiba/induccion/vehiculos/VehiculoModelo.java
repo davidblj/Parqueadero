@@ -1,11 +1,16 @@
 package com.ceiba.induccion.vehiculos;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import com.ceiba.induccion.utils.Constants;
 
 public class VehiculoModelo {
 
 	String placa;
 	String tipo;
+	Calendar fechaDeIngreso;	
+
 	int cilindraje;
 	
 	// private Date fechaDeIngreso
@@ -40,13 +45,21 @@ public class VehiculoModelo {
 		this.cilindraje = cilindraje;
 	}
 	
+	public Calendar getFechaDeIngreso() {
+		return fechaDeIngreso;
+	}
+
+	public void setFechaDeIngreso(Calendar fechaDeIngreso) {
+		this.fechaDeIngreso = fechaDeIngreso;
+	}
+	
 	public boolean esMoto() {
 		return this.tipo.equals(Constants.VEHICULO_MOTO);
 	}
 
 	public boolean esCarro() {
 		return this.tipo.equals(Constants.VEHICULO_CARRO);
-	}
+	}		
 	
 	// cilindraje > 550 (con herencia)
 }

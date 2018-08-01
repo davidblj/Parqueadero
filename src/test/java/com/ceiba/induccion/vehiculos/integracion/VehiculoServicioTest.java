@@ -107,7 +107,11 @@ public class VehiculoServicioTest {
 		
 		// arrange
 		VehiculoModelo vehiculoRepetido = new VehiculoTestDataBuilder().build();
-		VehiculoEntidad vehiculoRepetidoEntidad = new VehiculoEntidad(vehiculoRepetido.getPlaca(), vehiculoRepetido.getTipo(), vehiculoRepetido.getCilindraje()); 
+		VehiculoEntidad vehiculoRepetidoEntidad = new VehiculoEntidad(
+				vehiculoRepetido.getPlaca(), 
+				vehiculoRepetido.getTipo(), 
+				vehiculoRepetido.getCilindraje(), 
+				vehiculoRepetido.getFechaDeIngreso()); 
 		vehiculoRepositorio.save(vehiculoRepetidoEntidad);
 						
 		VehiculoDTO vehiculoRepetidoDTO = new VehiculoDTO(vehiculoRepetido.getPlaca(), vehiculoRepetido.getTipo(), vehiculoRepetido.getCilindraje());

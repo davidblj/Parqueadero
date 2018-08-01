@@ -15,7 +15,7 @@ public class ApiBuilder {
 	}
 	
 	public VehiculoEntidad vehiculoToVehiculoEntidad(VehiculoModelo vehiculo) {
-		return new VehiculoEntidad(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
+		return new VehiculoEntidad(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje(), vehiculo.getFechaDeIngreso());
 	}
 	
 	public VehiculoDTO vehiculoEntidadToVehiculoDTO(VehiculoEntidad vehiculo) {
