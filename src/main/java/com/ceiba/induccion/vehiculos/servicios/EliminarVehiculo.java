@@ -37,6 +37,7 @@ public class EliminarVehiculo {
 		// TODO: get price (using polymorphism)
 		// TODO: prepare response object
 		
-		return new FacturaDTO(0, 0, horasTranscurridas);
+		// return new FacturaDTO(0, 0, horasTranscurridas);
+		return null;
 	}	
 }

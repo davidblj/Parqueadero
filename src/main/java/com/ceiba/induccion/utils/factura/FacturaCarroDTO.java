@@ -1,9 +1,11 @@
 package com.ceiba.induccion.utils.factura;
 
-public class FacturaCarroDTO extends FacturaDTO {
+import org.springframework.stereotype.Component;
 
-	public FacturaCarroDTO(int horas, int dias, float precio) {
-		super(horas, dias, precio);
-		// TODO Auto-generated constructor stub
+@Component
+public class FacturaCarroDTO extends FacturaDTO {
+	
+	public FacturaCarroDTO() {
+		super();
 	}
 }
