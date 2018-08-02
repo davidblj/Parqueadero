@@ -14,7 +14,7 @@ public class FacturaFactory {
 		}
 		
 		if (vehiculo.esMoto()) {
-			return new FacturaMotoDTO();
+			return new FacturaMotoDTO(vehiculo.getCilindraje());
 		}
 		
 		return null;

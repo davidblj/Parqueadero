@@ -225,8 +225,24 @@ public class facturaTest {
 		// assert
 		boolean esPreciso = factura.getHoras() == 0 &&
 							factura.getDias() == 2;
- 		// assertTrue(esPreciso);		
- 		assertEquals(factura.getHoras(), 0);
+ 		assertTrue(esPreciso);		
+	}
+	
+	
+	@Test
+	public void facturarCarro() {
+		
+		// arrange
+		
+		
+		// act
+		
+		// assert
+	}
+	
+	@Test
+	public void facturarMotos() {
+		
 	}
 		
 	private Calendar obtenerFechaDeIngreso() {
@@ -239,5 +255,5 @@ public class facturaTest {
 				minutoDeIngreso);	
 		
 		return fechaDeIngreso;
-	}
+	}		
 }

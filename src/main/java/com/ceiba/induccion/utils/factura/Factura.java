@@ -13,15 +13,14 @@ public class Factura {
 	@Autowired
 	Calendario calendario;
 	
-	private int horas = 0;			
-	private int dias = 0;
-	private float precio;	
+	protected int horas = 0;			
+	protected int dias = 0;	
+	protected float precio;	 
 	
 	public void generar(Calendar fechaDeIngreso) {
 		
 		float horasTranscurridas = calcularHorasTranscurridas(fechaDeIngreso);
 		calcularTiempoEstimado(horasTranscurridas);				
-		// TODO: generate the total price (on each subclass)
 	}
 	
 	public void reset() {

@@ -70,7 +70,6 @@ public class VehiculoServicioTest {
 				
 		try {
 			// act
-			// servicio.agregarVehiculo(nuevoVehiculoDTO);
 			agregarVehiculo.ejecutar(nuevoVehiculoDTO);
 			fail("Se esperaba una excepcion (ParametrosInvalidos)");
 			
