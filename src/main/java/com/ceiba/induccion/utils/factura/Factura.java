@@ -3,15 +3,17 @@ package com.ceiba.induccion.utils.factura;
 import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.utils.Calendario;
 
+@Component
 public class Factura {	
 	
 	@Autowired
 	Calendario calendario;
 	
-	private int horas = 0;		
+	private int horas = 0;			
 	private int dias = 0;
 	private float precio;	
 	
@@ -20,6 +22,11 @@ public class Factura {
 		float horasTranscurridas = calcularHorasTranscurridas(fechaDeIngreso);
 		calcularTiempoEstimado(horasTranscurridas);				
 		// TODO: generate the total price (on each subclass)
+	}
+	
+	public void reset() {
+		this.horas = 0;
+		this.dias = 0;
 	}
 	
 	// utils
@@ -71,5 +78,13 @@ public class Factura {
 	
 	public float getPrecio() {
 		return precio;
-	}	
+	}
+	
+	public int getHoras() {
+		return horas;
+	}
+
+	public int getDias() {
+		return dias;
+	}
 }
