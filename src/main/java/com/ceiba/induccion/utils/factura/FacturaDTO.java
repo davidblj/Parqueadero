@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos;
+package com.ceiba.induccion.utils.factura;
 
 public class FacturaDTO {
 	

@@ -29,6 +29,7 @@ public class Calendario {
 	}
 	
 	private float convertirMiliEnHoras(long milisegundos) {		
+		
 		float equivalencia = 1000 * 60 * 60;  
 		return milisegundos/equivalencia;
 	}

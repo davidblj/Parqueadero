@@ -1,4 +1,4 @@
-package com.ceiba.induccion.excepciones;
+package com.ceiba.induccion.utils.excepciones;
 
 public class ParametrosInvalidos extends RuntimeException {	
 

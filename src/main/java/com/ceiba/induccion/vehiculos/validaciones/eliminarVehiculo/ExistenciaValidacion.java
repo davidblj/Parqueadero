@@ -2,7 +2,7 @@ package com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ceiba.induccion.excepciones.ParametrosInvalidos;
+import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
 

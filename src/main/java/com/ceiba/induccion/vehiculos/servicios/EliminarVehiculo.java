@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.utils.Calendario;
-import com.ceiba.induccion.vehiculos.FacturaDTO;
+import com.ceiba.induccion.utils.factura.FacturaDTO;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo.ReglaEliminarVehiculo;

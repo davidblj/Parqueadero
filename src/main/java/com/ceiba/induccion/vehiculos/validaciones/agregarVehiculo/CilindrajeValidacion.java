@@ -1,6 +1,6 @@
 package com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo;
 
-import com.ceiba.induccion.excepciones.Conflicto;
+import com.ceiba.induccion.utils.excepciones.Conflicto;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 public class CilindrajeValidacion implements ReglaAgregarVehiculo {

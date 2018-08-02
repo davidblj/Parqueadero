@@ -16,9 +16,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ceiba.induccion.excepciones.Conflicto;
 import com.ceiba.induccion.parqueadero.ParqueaderoServicio;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
+import com.ceiba.induccion.utils.excepciones.Conflicto;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.DisponibilidadValidacion;
 

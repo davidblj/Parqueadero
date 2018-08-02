@@ -3,7 +3,7 @@ package com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.induccion.excepciones.ParametrosInvalidos;
+import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
