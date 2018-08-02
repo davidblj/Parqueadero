@@ -5,9 +5,12 @@ import java.util.Calendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ceiba.induccion.utils.ApiBuilder;
 import com.ceiba.induccion.utils.Calendario;
-import com.ceiba.induccion.utils.factura.FacturaDTO;
+import com.ceiba.induccion.utils.factura.Factura;
+import com.ceiba.induccion.utils.factura.FacturaFactory;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
+import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo.ReglaEliminarVehiculo;
 import com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo.ReglasEliminarVehiculo;
@@ -20,24 +23,27 @@ public class EliminarVehiculo {
 	private VehiculoRepositorio vehiculoRepositorio;
 	
 	@Autowired
-	private ReglasEliminarVehiculo reglas;
+	private ReglasEliminarVehiculo reglas;	
 	
 	@Autowired
-	private Calendario calendario;
+	private ApiBuilder apiBuilder;
+	
+	@Autowired
+	private FacturaFactory facturaFactory;
 
-	public FacturaDTO ejecutar(String placa) {
+	public Factura ejecutar(String placa) {
 		
 		for (ReglaEliminarVehiculo rule: reglas.validacionesEliminarVehiculo()) {
 			rule.validate(placa);
 		}
 		
-		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placa);
-		float horasTranscurridas = calendario.calcularHorasTranscurridas(vehiculo.getFechaDeIngreso());				
-				
-		// TODO: get price (using polymorphism)
-		// TODO: prepare response object
+		VehiculoEntidad vehiculoEntidad = vehiculoRepositorio.findByPlaca(placa);	
+		VehiculoModelo vehiculo = apiBuilder.vehiculoEntidadToVehiculo(vehiculoEntidad);
 		
-		// return new FacturaDTO(0, 0, horasTranscurridas);
-		return null;
+		Factura factura = facturaFactory.instanciarFactura(vehiculo);
+		factura.generar(vehiculo.getFechaDeIngreso());
+		
+		// TODO: send the response object		
+		return factura;
 	}	
 }

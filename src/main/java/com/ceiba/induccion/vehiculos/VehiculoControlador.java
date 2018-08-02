@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ceiba.induccion.utils.excepciones.Conflicto;
 import com.ceiba.induccion.utils.excepciones.ErrorInternoDelServidor;
 import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
-import com.ceiba.induccion.utils.factura.FacturaDTO;
+import com.ceiba.induccion.utils.factura.Factura;
 import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
 import com.ceiba.induccion.vehiculos.servicios.EliminarVehiculo;
 import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
@@ -57,7 +57,7 @@ public class VehiculoControlador {
 	@RequestMapping(value="{placa}", method=RequestMethod.DELETE, produces="application/json")
 	public ResponseEntity<?> eliminar(@PathVariable String placa) {
 		
-		FacturaDTO factura = eliminarVehiculo.ejecutar(placa);
+		Factura factura = eliminarVehiculo.ejecutar(placa);
 		return ResponseEntity.status(HttpStatus.OK).body(factura);
 	}
 }

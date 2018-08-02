@@ -7,7 +7,7 @@ import com.ceiba.induccion.vehiculos.VehiculoModelo;
 @Component
 public class FacturaFactory {
 
-	public FacturaDTO instanciarFactura(VehiculoModelo vehiculo) {
+	public Factura instanciarFactura(VehiculoModelo vehiculo) {
 		
 		if (vehiculo.esCarro()) {
 			return new FacturaCarroDTO();
