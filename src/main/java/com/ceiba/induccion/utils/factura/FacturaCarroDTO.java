@@ -8,14 +8,11 @@ import org.springframework.stereotype.Component;
 public class FacturaCarroDTO extends Factura {
 	
 	private int valorHora = 1000;
-	private int valorDia = 8000;
-	
-	public FacturaCarroDTO() {
-		super();
-	}
+	private int valorDia = 8000;		
 	
 	@Override
 	public void generar(Calendar fechaDeIngreso) {
 		super.generar(fechaDeIngreso);		
+		this.precio = valorHora * horas + valorDia * dias;
 	}
 }

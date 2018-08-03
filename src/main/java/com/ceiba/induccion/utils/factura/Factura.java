@@ -15,7 +15,7 @@ public class Factura {
 	
 	protected int horas = 0;			
 	protected int dias = 0;	
-	protected float precio;	 
+	protected int precio;	 
 	
 	public void generar(Calendar fechaDeIngreso) {
 		
@@ -40,7 +40,7 @@ public class Factura {
 		
 		long fechaDeIngresoEnMillis = fechaDeIngreso.getTimeInMillis();
 		
-		Calendar tiempoActual = calendario.obtenerFechaAcual();
+		Calendar tiempoActual = calendario.obtenerFechaActual();
 		long tiempoActualEnMillis = tiempoActual.getTimeInMillis();
 
 		long tiempoTranscurridoEnMilis = tiempoActualEnMillis - fechaDeIngresoEnMillis;

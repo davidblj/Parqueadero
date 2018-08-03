@@ -1,20 +1,30 @@
 package com.ceiba.induccion.utils.factura;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
-public class FacturaFactory {
+public class FacturaFactory extends Factura {
+	
+	@Autowired
+	FacturaMotoDTO facturaMoto;
+	
+	@Autowired
+	FacturaCarroDTO facturaCarro;
 
 	public Factura instanciarFactura(VehiculoModelo vehiculo) {
 		
 		if (vehiculo.esCarro()) {
-			return new FacturaCarroDTO();
+			
+			return facturaCarro;
 		}
 		
 		if (vehiculo.esMoto()) {
-			return new FacturaMotoDTO(vehiculo.getCilindraje());
+						
+			facturaMoto.setCilindraje(vehiculo.getCilindraje());
+			return facturaMoto;
 		}
 		
 		return null;

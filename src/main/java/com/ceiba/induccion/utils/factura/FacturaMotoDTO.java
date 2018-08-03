@@ -5,15 +5,11 @@ import java.util.Calendar;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FacturaMotoDTO	 extends Factura {
+public class FacturaMotoDTO	extends Factura {
 
 	private int valorHora = 5000;
 	private int valorDia = 4000;
-	private int cilindraje;
-	
-	public FacturaMotoDTO(int cilindraje) {
-		super();		
-	}
+	private int cilindraje;	
 	
 	@Override
 	public void generar(Calendar fechaDeIngreso) {
@@ -25,5 +21,9 @@ public class FacturaMotoDTO	 extends Factura {
 		if (esDeAltoCilindraje) {
 			this.precio += 2000;
 		}
+	}
+	 
+	public void setCilindraje(int cilindraje) {
+		this.cilindraje = cilindraje;
 	}
 }

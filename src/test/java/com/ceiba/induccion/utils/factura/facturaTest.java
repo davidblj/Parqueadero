@@ -1,7 +1,9 @@
 package com.ceiba.induccion.utils.factura;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.util.Calendar;
@@ -16,7 +18,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.Calendario;
+import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -28,6 +32,9 @@ public class facturaTest {
 	
 	@Autowired
 	Factura factura;
+	
+	@Autowired
+	FacturaFactory facturaFactory;
 	
 	static Calendario fechaDeIngreso;
 	
@@ -53,7 +60,7 @@ public class facturaTest {
 				horaDeIngreso, 
 				minutoDeIngreso + 59);
 		
-		when(calendario.obtenerFechaAcual()).thenReturn(fechaActual);
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
 		factura.generar(fechaDeIngreso);
@@ -76,7 +83,7 @@ public class facturaTest {
 				horaDeIngreso, 
 				minutoDeIngreso + 20);
 		
-		when(calendario.obtenerFechaAcual()).thenReturn(fechaActual);
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
 		factura.generar(fechaDeIngreso);
@@ -99,7 +106,7 @@ public class facturaTest {
 				horaDeIngreso + 8, 
 				minutoDeIngreso + 59);
 		
-		when(calendario.obtenerFechaAcual()).thenReturn(fechaActual);
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
 		factura.generar(fechaDeIngreso);
@@ -121,7 +128,7 @@ public class facturaTest {
 				horaDeIngreso + 9, 
 				minutoDeIngreso);
 		
-		when(calendario.obtenerFechaAcual()).thenReturn(fechaActual);
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
 		factura.generar(fechaDeIngreso);
@@ -145,7 +152,7 @@ public class facturaTest {
 				horaDeIngreso + 12, 
 				minutoDeIngreso);
 		
-		when(calendario.obtenerFechaAcual()).thenReturn(fechaActual);
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
 		factura.generar(fechaDeIngreso);
@@ -169,7 +176,7 @@ public class facturaTest {
 				horaDeIngreso, 
 				minutoDeIngreso);
 		
-		when(calendario.obtenerFechaAcual()).thenReturn(fechaActual);
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
 		factura.generar(fechaDeIngreso);
@@ -193,7 +200,7 @@ public class facturaTest {
 				horaDeIngreso + 1, 
 				minutoDeIngreso);
 		
-		when(calendario.obtenerFechaAcual()).thenReturn(fechaActual);
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
 		factura.generar(fechaDeIngreso);
@@ -217,7 +224,7 @@ public class facturaTest {
 				horaDeIngreso + 10, 
 				minutoDeIngreso);
 		
-		when(calendario.obtenerFechaAcual()).thenReturn(fechaActual);
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
 		factura.generar(fechaDeIngreso);
@@ -233,11 +240,26 @@ public class facturaTest {
 	public void facturarCarro() {
 		
 		// arrange
+		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();
+		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo);
 		
+		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.set(
+				2018, 
+				Calendar.JANUARY, 
+				diaDeIngreso + 1, 
+				horaDeIngreso + 10, 
+				minutoDeIngreso);
 		
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
+				
 		// act
+		facturaCarro.generar(fechaDeIngreso);
 		
 		// assert
+		assertThat(factura.getPrecio(), is(16000));
+		// assertThat(factura.getPrecio()).		
 	}
 	
 	@Test

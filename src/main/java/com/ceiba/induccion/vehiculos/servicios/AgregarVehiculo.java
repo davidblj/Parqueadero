@@ -53,7 +53,7 @@ public class AgregarVehiculo {
 	
 	private void agregarFechaDeIngreso(VehiculoModelo vehiculo) {
 		
-		vehiculo.setFechaDeIngreso(calendario.obtenerFechaAcual());
+		vehiculo.setFechaDeIngreso(calendario.obtenerFechaActual());
 	}
 	
 	private void liberarCeldaSegunVehiculo(VehiculoModelo vehiculo) {

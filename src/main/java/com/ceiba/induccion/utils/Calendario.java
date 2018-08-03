@@ -10,10 +10,10 @@ public class Calendario {
 	// TODO: how can i mock this class 
 	
 	public int obtenerDiaActual() {
-		return obtenerFechaAcual().get(Calendar.DAY_OF_WEEK);
+		return obtenerFechaActual().get(Calendar.DAY_OF_WEEK);
 	}
 
-	public Calendar obtenerFechaAcual() {
+	public Calendar obtenerFechaActual() {
 		return Calendar.getInstance();
 	}		
 }
