@@ -75,7 +75,7 @@ public class Factura {
 		}
 	}
 	
-	public float getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
 	

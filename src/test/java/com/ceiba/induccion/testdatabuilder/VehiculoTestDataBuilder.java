@@ -31,4 +31,9 @@ public class VehiculoTestDataBuilder {
 		this.placa = placa;
 		return this;
 	}
+	
+	public VehiculoTestDataBuilder conCilindraje(int cilindraje) {
+		this.cilindraje = cilindraje;
+		return this;
+	}
 }

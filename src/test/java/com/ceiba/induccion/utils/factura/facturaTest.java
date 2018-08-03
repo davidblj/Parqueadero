@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.Calendar;
 
+import org.apache.tomcat.util.bcel.classfile.Constant;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.Calendario;
+import com.ceiba.induccion.utils.Constants;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @SpringBootTest
@@ -258,13 +260,62 @@ public class facturaTest {
 		facturaCarro.generar(fechaDeIngreso);
 		
 		// assert
-		assertThat(factura.getPrecio(), is(16000));
-		// assertThat(factura.getPrecio()).		
+		assertThat(facturaCarro.getPrecio(), is(16000));		
 	}
 	
 	@Test
 	public void facturarMotos() {
 		
+		// arrange
+		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()
+				.conTipo(Constants.VEHICULO_MOTO)
+				.build();				
+		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo);
+		
+		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.set(
+				2018, 
+				Calendar.JANUARY, 
+				diaDeIngreso + 1, 
+				horaDeIngreso + 10, 
+				minutoDeIngreso);
+		
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
+				
+		// act
+		facturaCarro.generar(fechaDeIngreso);
+		
+		// assert
+		assertThat(facturaCarro.getPrecio(), is(8000));
+	}
+		
+	@Test
+	public void facturarMotosConAltoCilindraje() {
+		
+		// arrange
+		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()
+				.conTipo(Constants.VEHICULO_MOTO)
+				.conCilindraje(600)
+				.build();				
+		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo);
+		
+		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.set(
+				2018, 
+				Calendar.JANUARY, 
+				diaDeIngreso + 1, 
+				horaDeIngreso + 10, 
+				minutoDeIngreso);
+		
+		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
+				
+		// act
+		facturaCarro.generar(fechaDeIngreso);
+		
+		// assert
+		assertThat(facturaCarro.getPrecio(), is(10000));
 	}
 		
 	private Calendar obtenerFechaDeIngreso() {

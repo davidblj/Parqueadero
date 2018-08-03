@@ -42,8 +42,7 @@ public class EliminarVehiculo {
 		
 		Factura factura = facturaFactory.instanciarFactura(vehiculo);
 		factura.generar(vehiculo.getFechaDeIngreso());
-		
-		// TODO: send the response object		
+			
 		return factura;
 	}	
 }
