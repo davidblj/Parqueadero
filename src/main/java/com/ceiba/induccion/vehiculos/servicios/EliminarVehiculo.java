@@ -33,6 +33,8 @@ public class EliminarVehiculo {
 
 	public Factura ejecutar(String placa) {
 		
+		// TODO: check clean code
+		
 		for (ReglaEliminarVehiculo rule: reglas.validacionesEliminarVehiculo()) {
 			rule.validate(placa);
 		}
@@ -42,7 +44,11 @@ public class EliminarVehiculo {
 		
 		Factura factura = facturaFactory.instanciarFactura(vehiculo);
 		factura.generar(vehiculo.getFechaDeIngreso());
-			
+		
+		vehiculoEntidad.setFechaSalida(factura.getFechaSalida());
+		vehiculoRepositorio.save(vehiculoEntidad);
 		return factura;
-	}	
+		
+		// vehiculoRepositorio.updateFechaSalida(factura.getFechaSalida(), vehiculo.getPlaca());				
+	}
 }

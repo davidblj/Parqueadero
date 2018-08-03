@@ -9,16 +9,24 @@ public class VehiculoModelo {
 
 	String placa;
 	String tipo;
-	Calendar fechaDeIngreso;	
+	Calendar fechaDeIngreso;
+	Calendar fechaDeSalida;	
 
 	int cilindraje;
 	
 	// private Date fechaDeIngreso
 	
-	public VehiculoModelo(String placa, String tipo, int cilindraje) {
+	public VehiculoModelo(String placa, String tipo, int cilindraje, Calendar fechaDeIngreso) {
 		this.placa = placa;
 		this.tipo = tipo;
 		this.cilindraje = cilindraje;
+		this.fechaDeIngreso = fechaDeIngreso;
+	}
+	
+	public VehiculoModelo(String placa, String tipo, int cilindraje) {
+		this.placa = placa;
+		this.tipo = tipo;
+		this.cilindraje = cilindraje;		
 	}
 
 	public String getPlaca() {
@@ -59,7 +67,13 @@ public class VehiculoModelo {
 
 	public boolean esCarro() {
 		return this.tipo.equals(Constants.VEHICULO_CARRO);
-	}		
-	
-	// cilindraje > 550 (con herencia)
+	}
+
+	public Calendar getFechaDeSalida() {
+		return fechaDeSalida;
+	}
+
+	public void setFechaDeSalida(Calendar fechaDeSalida) {
+		this.fechaDeSalida = fechaDeSalida;
+	}				
 }

@@ -8,7 +8,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.Calendar;
 
-import org.apache.tomcat.util.bcel.classfile.Constant;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,6 +47,8 @@ public class facturaTest {
 	public void setUp() {
 		factura.reset();
 	}
+	
+	// TODO: check code duplication
 
 	@Test
 	public void facturarMenosDeUnaHora() {

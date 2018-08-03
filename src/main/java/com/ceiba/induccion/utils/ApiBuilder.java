@@ -15,10 +15,11 @@ public class ApiBuilder {
 	}
 	
 	public VehiculoModelo vehiculoEntidadToVehiculo(VehiculoEntidad vehiculo) {
-		return new VehiculoModelo(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
+		return new VehiculoModelo(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje(), vehiculo.getFechaDeIngreso());
 	}
 	
 	// TODO: marked for deletion
+	
 	public VehiculoModelo vehiculoDTOToVehiculo(VehiculoDTO vehiculo) {		
 		return new VehiculoModelo(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
 	}

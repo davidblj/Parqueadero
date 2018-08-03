@@ -79,5 +79,6 @@ public class VehiculoServicioTest {
 		
 		// assert
 		// no exception thrown expected (Test.none.class)
+		
 	}	
 }

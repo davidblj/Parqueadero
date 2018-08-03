@@ -45,6 +45,18 @@ public class VehiculoControlador {
 		} catch (Conflicto e) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
 		}
+	}			
+	
+	@RequestMapping(value="{placa}", method=RequestMethod.DELETE, produces="application/json")
+	public ResponseEntity<?> eliminar(@PathVariable String placa) {
+		
+		try {
+			Factura factura = eliminarVehiculo.ejecutar(placa);
+			return ResponseEntity.status(HttpStatus.OK).body(factura);
+			
+		} catch (ParametrosInvalidos e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+		}		
 	}
 	
 	@RequestMapping(value="{placa}", method=RequestMethod.GET, produces="application/json")
@@ -52,12 +64,5 @@ public class VehiculoControlador {
 		
 		VehiculoDTO vehiculo = obtenerVehiculo.ejecutar(placa);
 		return ResponseEntity.status(HttpStatus.OK).body(vehiculo);
-	}	
-	
-	@RequestMapping(value="{placa}", method=RequestMethod.DELETE, produces="application/json")
-	public ResponseEntity<?> eliminar(@PathVariable String placa) {
-		
-		Factura factura = eliminarVehiculo.ejecutar(placa);
-		return ResponseEntity.status(HttpStatus.OK).body(factura);
 	}
 }
