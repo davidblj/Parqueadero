@@ -260,7 +260,7 @@ public class facturaTest {
 		facturaCarro.generar(vehiculo);
 		
 		// assert
-		assertThat(facturaCarro.getPrecio(), is(16000));		
+		assertThat(facturaCarro.getPrecioFactura(), is(16000));		
 	}
 	
 	@Test
@@ -287,7 +287,7 @@ public class facturaTest {
 		facturaCarro.generar(vehiculo);
 		
 		// assert
-		assertThat(facturaCarro.getPrecio(), is(8000));
+		assertThat(facturaCarro.getPrecioFactura(), is(8000));
 	}
 		
 	@Test
@@ -315,7 +315,7 @@ public class facturaTest {
 		facturaCarro.generar(vehiculo);
 		
 		// assert
-		assertThat(facturaCarro.getPrecio(), is(10000));
+		assertThat(facturaCarro.getPrecioFactura(), is(10000));
 	}
 	
 	// utils

@@ -16,11 +16,11 @@ public class FacturaMotoDTO	extends Factura {
 	public void generar(VehiculoModelo vehiculo) {
 		super.generar(vehiculo);
 		
-		this.precio = valorHora * horas + valorDia * dias;
+		this.precioFactura = valorHora * horas + valorDia * dias;
 		boolean esDeAltoCilindraje = vehiculo.getCilindraje() > 500;
 		
 		if (esDeAltoCilindraje) {
-			this.precio += 2000;
+			this.precioFactura += 2000;
 		}
 	}	 
 }

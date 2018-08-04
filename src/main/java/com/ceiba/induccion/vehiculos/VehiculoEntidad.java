@@ -23,7 +23,7 @@ public class VehiculoEntidad {
 	private Calendar fechaDeIngreso;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar fechaSalida = null;	
+	private Calendar fechaDeSalida = null;	
 
 	private String placa;
 	private String tipo;
@@ -35,7 +35,7 @@ public class VehiculoEntidad {
 		this.placa = placa;
 		this.tipo = tipo;
 		this.cilindraje = cilindraje;
-		this.fechaDeIngreso = fechaDeIngreso;
+		this.fechaDeIngreso = fechaDeIngreso;		
 	}
 	
 	public Long getId() {
@@ -70,7 +70,7 @@ public class VehiculoEntidad {
 		return fechaDeIngreso;
 	}
 	
-	public void setFechaSalida(Calendar fechaSalida) {
-		this.fechaSalida = fechaSalida;
+	public void setFechaDeSalida(Calendar fechaDeSalida) {
+		this.fechaDeSalida = fechaDeSalida;
 	}
 }

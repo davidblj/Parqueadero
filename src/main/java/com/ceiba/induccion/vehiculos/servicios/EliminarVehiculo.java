@@ -1,12 +1,10 @@
 package com.ceiba.induccion.vehiculos.servicios;
 
-import java.util.Calendar;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ceiba.induccion.utils.ApiBuilder;
-import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.utils.factura.Factura;
 import com.ceiba.induccion.utils.factura.FacturaFactory;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
@@ -31,24 +29,32 @@ public class EliminarVehiculo {
 	@Autowired
 	private FacturaFactory facturaFactory;
 
+	@Transactional
 	public Factura ejecutar(String placa) {
-		
-		// TODO: check clean code
-		
+				
 		for (ReglaEliminarVehiculo rule: reglas.validacionesEliminarVehiculo()) {
 			rule.validate(placa);
-		}
+		}		
+		
+		VehiculoModelo vehiculo = encontrarVehiculo(placa);
+		Factura factura = generarFactura(vehiculo);
+		vehiculoRepositorio.updateFechaSalida(factura.getFechaDeSalida(), vehiculo.getPlaca());		
+		
+		return factura;	
+	}
+	
+	// utils
+	
+	private VehiculoModelo encontrarVehiculo(String placa) {	
 		
 		VehiculoEntidad vehiculoEntidad = vehiculoRepositorio.findByPlaca(placa);	
-		VehiculoModelo vehiculo = apiBuilder.vehiculoEntidadToVehiculo(vehiculoEntidad);
+		return apiBuilder.vehiculoEntidadToVehiculo(vehiculoEntidad);
+	}
+	
+	private Factura generarFactura(VehiculoModelo vehiculo) {
 		
 		Factura factura = facturaFactory.instanciarFactura(vehiculo.getTipo());
 		factura.generar(vehiculo);
-		
-		vehiculoEntidad.setFechaSalida(factura.getFechaSalida());
-		vehiculoRepositorio.save(vehiculoEntidad);
 		return factura;
-		
-		// vehiculoRepositorio.updateFechaSalida(factura.getFechaSalida(), vehiculo.getPlaca());				
-	}
+	}			
 }

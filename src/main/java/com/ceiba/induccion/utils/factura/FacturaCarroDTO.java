@@ -15,6 +15,6 @@ public class FacturaCarroDTO extends Factura {
 	@Override
 	public void generar(VehiculoModelo vehiculo) {
 		super.generar(vehiculo);		
-		this.precio = (valorHora * horas) + (valorDia * dias);
+		this.precioFactura = (valorHora * horas) + (valorDia * dias);
 	}
 }

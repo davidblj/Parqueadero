@@ -11,10 +11,8 @@ public class VehiculoModelo {
 	String tipo;
 	Calendar fechaDeIngreso;
 	Calendar fechaDeSalida;	
-
 	int cilindraje;
 	
-	// private Date fechaDeIngreso
 	
 	public VehiculoModelo(String placa, String tipo, int cilindraje, Calendar fechaDeIngreso) {
 		this.placa = placa;
