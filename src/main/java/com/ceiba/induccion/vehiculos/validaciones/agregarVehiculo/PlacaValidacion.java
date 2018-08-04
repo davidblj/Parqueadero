@@ -25,7 +25,7 @@ public class PlacaValidacion implements ReglaAgregarVehiculo {
 		boolean placaEsValida = esLetra_A ? esUnDiaValido() : true;
 		
 		if (!placaEsValida)
-			throw new Conflicto("El vehiculo no puede ingresar los lunes y domingos");
+			throw new Conflicto("El vehiculo solamente puede ingresar los lunes y domingos");
 	}
 	
 	private boolean esUnDiaValido() {		

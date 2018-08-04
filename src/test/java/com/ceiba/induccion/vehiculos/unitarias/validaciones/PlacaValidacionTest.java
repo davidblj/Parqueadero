@@ -37,8 +37,8 @@ public class PlacaValidacionTest {
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
 		
-		int diaLunes = 2;
-		when(calendario.obtenerDiaActual()).thenReturn(diaLunes);
+		int diaMartes = 2;
+		when(calendario.obtenerDiaActual()).thenReturn(diaMartes);
 		
 		try {			
 			// act
@@ -47,7 +47,7 @@ public class PlacaValidacionTest {
 		} catch(Conflicto e) {
 			
 			// assert
-			assertThat(e.getMessage(), is("El vehiculo no puede ingresar los lunes y domingos"));
+			assertThat(e.getMessage(), is("El vehiculo solamente puede ingresar los lunes y domingos"));
 		}			
 	}
 	
@@ -57,8 +57,8 @@ public class PlacaValidacionTest {
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
 		
-		int diaMartes= 2;
-		when(calendario.obtenerDiaActual()).thenReturn(diaMartes);
+		int diaLunes = 1;
+		when(calendario.obtenerDiaActual()).thenReturn(diaLunes);
 		
 		// act
 		placaValidacion.validate(vehiculo);

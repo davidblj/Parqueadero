@@ -143,12 +143,12 @@ public class VehiculoServicioTest {
 			
 		} catch (Conflicto e) {
 			// assert
-			assertThat(e.getMessage(), is("El vehiculo no puede ingresar los lunes y domingos"));
+			assertThat(e.getMessage(), is("El vehiculo solamente puede ingresar los lunes y domingos"));
 		}
 	}
 	
 	@Test
-	public void testAgregarVehiculoEnDiaAbilitado() {
+	public void testAgregarVehiculoEnDiaHabilitado() {
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
