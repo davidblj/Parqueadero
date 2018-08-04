@@ -54,7 +54,7 @@ public class facturaTest {
 	public void facturarMenosDeUnaHora() {
 		
 		// arrange
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -66,7 +66,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
-		factura.generar(fechaDeIngreso);
+		factura.generar(vehiculo);
 		
 		// assert
 		assertEquals(factura.getHoras(), 1);
@@ -77,7 +77,7 @@ public class facturaTest {
 	public void facturarUnaHora() {
 		
 		// arrange
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -89,7 +89,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
-		factura.generar(fechaDeIngreso);
+		factura.generar(vehiculo);
 		
 		// assert
 		assertEquals(factura.getHoras(), 1);
@@ -100,7 +100,7 @@ public class facturaTest {
 	public void facturarMenosDeNueveHoras() {
 				
 		// arrange
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -112,7 +112,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
-		factura.generar(fechaDeIngreso);
+		factura.generar(vehiculo);
 		
 		// assert
 		assertEquals(factura.getHoras(), 9);
@@ -122,7 +122,7 @@ public class facturaTest {
 	public void facturarNueveHoras() {
 		
 		// arrange
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -134,7 +134,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
-		factura.generar(fechaDeIngreso);
+		factura.generar(vehiculo);
 		
 		// assert
 		boolean noHayDesfase = 	factura.getHoras() == 9 &&
@@ -146,7 +146,7 @@ public class facturaTest {
 	public void facturarMenosDeUnDia() {
 		
 		// arrange
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -158,7 +158,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
-		factura.generar(fechaDeIngreso);
+		factura.generar(vehiculo);
 		
 		// assert
 		boolean noHayDesfase = 	factura.getHoras() == 0 &&
@@ -170,7 +170,7 @@ public class facturaTest {
 	public void facturarUnDia() {
 		
 		// arrange
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -182,7 +182,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
-		factura.generar(fechaDeIngreso);
+		factura.generar(vehiculo);
 		
 		// assert
 		boolean noHayDesfase = 	factura.getHoras() == 0 &&
@@ -194,7 +194,7 @@ public class facturaTest {
 	public void facturarUnDiaYMenosDeNueveHoras() {
 		
 		// arrange
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -206,7 +206,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
-		factura.generar(fechaDeIngreso);
+		factura.generar(vehiculo);
 		
 		// assert
 		boolean esPreciso = factura.getHoras() == 1 &&
@@ -218,7 +218,7 @@ public class facturaTest {
 	public void facturarUnDiaYMasDeNueveHoras() {
 		
 		// arrange
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -230,7 +230,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
 		// act
-		factura.generar(fechaDeIngreso);
+		factura.generar(vehiculo);
 		
 		// assert
 		boolean esPreciso = factura.getHoras() == 0 &&
@@ -243,10 +243,9 @@ public class facturaTest {
 	public void facturarCarro() {
 		
 		// arrange
-		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();
-		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo);
-		
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
+		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo.getTipo());
+				
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -258,7 +257,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 				
 		// act
-		facturaCarro.generar(fechaDeIngreso);
+		facturaCarro.generar(vehiculo);
 		
 		// assert
 		assertThat(facturaCarro.getPrecio(), is(16000));		
@@ -270,10 +269,10 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()
 				.conTipo(Constants.VEHICULO_MOTO)
+				.conFechaDeIngreso(obtenerFechaDeIngreso())
 				.build();				
-		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo);
-		
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
+		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo.getTipo());
+				
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -285,7 +284,7 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 				
 		// act
-		facturaCarro.generar(fechaDeIngreso);
+		facturaCarro.generar(vehiculo);
 		
 		// assert
 		assertThat(facturaCarro.getPrecio(), is(8000));
@@ -297,11 +296,11 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()
 				.conTipo(Constants.VEHICULO_MOTO)
+				.conFechaDeIngreso(obtenerFechaDeIngreso())
 				.conCilindraje(600)
 				.build();				
-		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo);
+		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo.getTipo());
 		
-		Calendar fechaDeIngreso = obtenerFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.set(
 				2018, 
@@ -313,21 +312,31 @@ public class facturaTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 				
 		// act
-		facturaCarro.generar(fechaDeIngreso);
+		facturaCarro.generar(vehiculo);
 		
 		// assert
 		assertThat(facturaCarro.getPrecio(), is(10000));
 	}
+	
+	// utils
 		
+	private VehiculoModelo obtenerVehiculoConFechaDeIngreso() {
+				
+		return new VehiculoTestDataBuilder()
+				.conFechaDeIngreso(obtenerFechaDeIngreso())
+				.build();
+	}
+	
 	private Calendar obtenerFechaDeIngreso() {
+		
 		Calendar fechaDeIngreso = Calendar.getInstance();
 		fechaDeIngreso.set(
 				2018, 
 				Calendar.JANUARY, 
 				diaDeIngreso, 
 				horaDeIngreso, 
-				minutoDeIngreso);	
+				minutoDeIngreso);
 		
 		return fechaDeIngreso;
-	}		
+	}
 }

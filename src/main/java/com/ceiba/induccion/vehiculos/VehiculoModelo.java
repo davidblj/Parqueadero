@@ -59,6 +59,14 @@ public class VehiculoModelo {
 
 	public void setFechaDeIngreso(Calendar fechaDeIngreso) {
 		this.fechaDeIngreso = fechaDeIngreso;
+	}		
+
+	public Calendar getFechaDeSalida() {
+		return fechaDeSalida;
+	}
+
+	public void setFechaDeSalida(Calendar fechaDeSalida) {
+		this.fechaDeSalida = fechaDeSalida;
 	}
 	
 	public boolean esMoto() {
@@ -68,12 +76,4 @@ public class VehiculoModelo {
 	public boolean esCarro() {
 		return this.tipo.equals(Constants.VEHICULO_CARRO);
 	}
-
-	public Calendar getFechaDeSalida() {
-		return fechaDeSalida;
-	}
-
-	public void setFechaDeSalida(Calendar fechaDeSalida) {
-		this.fechaDeSalida = fechaDeSalida;
-	}				
 }

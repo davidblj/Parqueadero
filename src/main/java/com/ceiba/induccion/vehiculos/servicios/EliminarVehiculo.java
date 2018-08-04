@@ -42,8 +42,8 @@ public class EliminarVehiculo {
 		VehiculoEntidad vehiculoEntidad = vehiculoRepositorio.findByPlaca(placa);	
 		VehiculoModelo vehiculo = apiBuilder.vehiculoEntidadToVehiculo(vehiculoEntidad);
 		
-		Factura factura = facturaFactory.instanciarFactura(vehiculo);
-		factura.generar(vehiculo.getFechaDeIngreso());
+		Factura factura = facturaFactory.instanciarFactura(vehiculo.getTipo());
+		factura.generar(vehiculo);
 		
 		vehiculoEntidad.setFechaSalida(factura.getFechaSalida());
 		vehiculoRepositorio.save(vehiculoEntidad);

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.utils.Calendario;
+import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
 public class Factura {	
@@ -16,11 +17,14 @@ public class Factura {
 	protected int horas = 0;			
 	protected int dias = 0;		
 	protected int precio;
+	private Calendar fechaDeIngreso;
 	private Calendar fechaSalida;
 	
-	public void generar(Calendar fechaDeIngreso) {
+	public void generar(VehiculoModelo vehiculo) {
 		
-		float horasTranscurridas = calcularHorasTranscurridas(fechaDeIngreso);
+		fechaDeIngreso = vehiculo.getFechaDeIngreso();
+		
+		float horasTranscurridas = calcularHorasTranscurridas();
 		calcularTiempoEstimado(horasTranscurridas);				
 	}
 	
@@ -37,7 +41,7 @@ public class Factura {
 		facturarHorasEstimadas(horasTranscurridas);						
 	}
 	
-	private float calcularHorasTranscurridas(Calendar fechaDeIngreso) {
+	private float calcularHorasTranscurridas() {
 		
 		long fechaDeIngresoEnMillis = fechaDeIngreso.getTimeInMillis();
 		
