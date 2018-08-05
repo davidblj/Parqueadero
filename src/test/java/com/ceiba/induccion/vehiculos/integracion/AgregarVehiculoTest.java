@@ -32,7 +32,7 @@ import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class VehiculoServicioTest {
+public class AgregarVehiculoTest {
 	
 	
 	@Autowired
@@ -47,8 +47,8 @@ public class VehiculoServicioTest {
 	@MockBean
 	private Calendario calendario;
 	
-	// TODO: how can i mock without spring mockBean?	
-	// TODO: code duplication 
+	// TODO: code duplication
+	// TODO: code duplication and simplicity. do use parqueaderoTestDataBuilder()
 	
 	@Before
 	public void SetUp() {

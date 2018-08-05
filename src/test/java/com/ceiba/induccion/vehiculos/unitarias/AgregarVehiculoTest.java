@@ -34,7 +34,7 @@ import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglasAgregarV
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class VehiculoServicioTest {	
+public class AgregarVehiculoTest {	
 	
 	@Autowired
 	AgregarVehiculo agregarVehiculo;	

@@ -14,6 +14,9 @@ public class Calendario {
 	}
 
 	public Calendar obtenerFechaActual() {
-		return Calendar.getInstance();
+		
+		Calendar calendario = Calendar.getInstance();
+		calendario.clear();
+		return calendario;
 	}		
 }

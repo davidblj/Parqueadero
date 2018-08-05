@@ -42,7 +42,7 @@ public class Factura {
 	}
 	
 	private float calcularHorasTranscurridas() {
-		
+							 
 		long fechaDeIngresoEnMillis = fechaDeIngreso.getTimeInMillis();
 		
 		Calendar tiempoActual = calendario.obtenerFechaActual();

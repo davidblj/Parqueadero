@@ -42,6 +42,7 @@ public class facturaTest {
 	int horaDeIngreso = 0;
 	int diaDeIngreso = 1;
 	int minutoDeIngreso = 0;	
+	int segundosDeIngreso = 0;
 	
 	@Before
 	public void setUp() {
@@ -56,12 +57,14 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
 				diaDeIngreso, 
 				horaDeIngreso, 
-				minutoDeIngreso + 59);
+				minutoDeIngreso + 59,
+				segundosDeIngreso);
 		
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
@@ -79,12 +82,13 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
 				diaDeIngreso, 
-				horaDeIngreso, 
-				minutoDeIngreso + 20);
+				horaDeIngreso + 1, 
+				minutoDeIngreso);
 		
 		when(calendario.obtenerFechaActual()).thenReturn(fechaActual);
 		
@@ -102,6 +106,7 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
@@ -124,6 +129,7 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
@@ -148,6 +154,7 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
@@ -172,6 +179,7 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
@@ -196,6 +204,7 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
@@ -210,7 +219,7 @@ public class facturaTest {
 		
 		// assert
 		boolean esPreciso = factura.getHoras() == 1 &&
-							factura.getDias() == 1;
+							factura.getDias() == 1;		
  		assertTrue(esPreciso);		
 	}
 	
@@ -220,6 +229,7 @@ public class facturaTest {
 		// arrange
 		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
@@ -240,13 +250,14 @@ public class facturaTest {
 	
 	
 	@Test
-	public void facturarCarro() {
+	public void facturarCarros() {
 		
 		// arrange
 		VehiculoModelo vehiculo = obtenerVehiculoConFechaDeIngreso();
 		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo.getTipo());
 				
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
@@ -260,7 +271,7 @@ public class facturaTest {
 		facturaCarro.generar(vehiculo);
 		
 		// assert
-		assertThat(facturaCarro.getPrecioFactura(), is(16000));		
+		assertEquals(facturaCarro.getPrecioFactura(), 16000);		
 	}
 	
 	@Test
@@ -274,6 +285,7 @@ public class facturaTest {
 		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo.getTipo());
 				
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
@@ -302,6 +314,7 @@ public class facturaTest {
 		Factura facturaCarro = facturaFactory.instanciarFactura(vehiculo.getTipo());
 		
 		Calendar fechaActual = Calendar.getInstance();
+		fechaActual.clear();
 		fechaActual.set(
 				2018, 
 				Calendar.JANUARY, 
@@ -330,6 +343,7 @@ public class facturaTest {
 	private Calendar obtenerFechaDeIngreso() {
 		
 		Calendar fechaDeIngreso = Calendar.getInstance();
+		fechaDeIngreso.clear();
 		fechaDeIngreso.set(
 				2018, 
 				Calendar.JANUARY, 
