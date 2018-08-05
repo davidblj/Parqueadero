@@ -29,24 +29,16 @@ public class EliminarVehiculo {
 	@Autowired
 	private FacturaFactory facturaFactory;
 
-	// @Transactional
+	@Transactional
 	public Factura ejecutar(String placa) {
 				
 		for (ReglaEliminarVehiculo rule: reglas.validacionesEliminarVehiculo()) {
 			rule.validate(placa);
 		}		
 		
-		/* VehiculoModelo vehiculo = encontrarVehiculo(placa);
+		VehiculoModelo vehiculo = encontrarVehiculo(placa);
 		Factura factura = generarFactura(vehiculo);
-		vehiculoRepositorio.updateFechaSalida(factura.getFechaDeSalida(), vehiculo.getPlaca());	*/	
-		
-		VehiculoEntidad vehiculoEntidad = vehiculoRepositorio.findByPlaca(placa);	
-		VehiculoModelo vehiculoModelo = apiBuilder.vehiculoEntidadToVehiculo(vehiculoEntidad);
-		
-		Factura factura = facturaFactory.instanciarFactura(vehiculoModelo.getTipo());
-		factura.generar(vehiculoModelo);
-		
-		vehiculoRepositorio.save(vehiculoEntidad);
+		vehiculoRepositorio.updateFechaSalida(factura.getFechaDeSalida(), vehiculo.getPlaca());					
 		
 		return factura;	
 	}
@@ -64,5 +56,5 @@ public class EliminarVehiculo {
 		Factura factura = facturaFactory.instanciarFactura(vehiculo.getTipo());
 		factura.generar(vehiculo);
 		return factura;
-	}			
+	}		
 }

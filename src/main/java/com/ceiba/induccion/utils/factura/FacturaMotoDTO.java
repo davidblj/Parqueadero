@@ -9,7 +9,7 @@ import com.ceiba.induccion.vehiculos.VehiculoModelo;
 @Component
 public class FacturaMotoDTO	extends Factura {
 
-	private int valorHora = 5000;
+	private int valorHora = 500;
 	private int valorDia = 4000;	
 	
 	@Override

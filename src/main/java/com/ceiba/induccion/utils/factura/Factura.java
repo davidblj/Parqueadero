@@ -20,6 +20,8 @@ public class Factura {
 	private Calendar fechaDeIngreso;
 	private Calendar fechaDeSalida;
 	
+	// TODO: delete the reset invocation
+	
 	public void generar(VehiculoModelo vehiculo) {
 		
 		fechaDeIngreso = vehiculo.getFechaDeIngreso();
@@ -37,6 +39,7 @@ public class Factura {
 	
 	private void calcularTiempoEstimado(float horasTranscurridas) {
 		
+		reset();
 		facturarDiasEstimados(horasTranscurridas);
 		facturarHorasEstimadas(horasTranscurridas);						
 	}

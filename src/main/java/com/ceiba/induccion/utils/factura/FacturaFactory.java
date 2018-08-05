@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
 public class FacturaFactory extends Factura {
@@ -13,8 +12,8 @@ public class FacturaFactory extends Factura {
 	FacturaMotoDTO facturaMoto;
 	
 	@Autowired
-	FacturaCarroDTO facturaCarro;
-
+	FacturaCarroDTO facturaCarro;	
+	
 	public Factura instanciarFactura(String tipo) {
 		
 		if (tipo.equals(Constants.VEHICULO_CARRO)) {

@@ -8,7 +8,7 @@ import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
 
-@Component
+@Component("ExistenciaValidacionAgregarVehiculo")
 public class ExistenciaValidacion implements ReglaAgregarVehiculo {	
 		
 	@Autowired
