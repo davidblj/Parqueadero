@@ -15,6 +15,7 @@ public class VehiculoTestDataBuilder {
 	private String tipo;
 	private int cilindraje;
 	private Calendar fechaDeIngreso;
+	private Calendar fechaDeSalida;
 	
 	public VehiculoTestDataBuilder() {
 		this.placa = PLACA;
@@ -42,6 +43,11 @@ public class VehiculoTestDataBuilder {
 	
 	public VehiculoTestDataBuilder conFechaDeIngreso(Calendar fechaDeIngreso) {
 		this.fechaDeIngreso = fechaDeIngreso;
+		return this;
+	}
+	
+	public VehiculoTestDataBuilder conFechaDeSalida(Calendar fechaDeSalida) {
+		this.fechaDeSalida = fechaDeSalida;
 		return this;
 	}
 }

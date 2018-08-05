@@ -11,8 +11,8 @@ import com.ceiba.induccion.utils.Constants;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
-import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglaAgregarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglasAgregarVehiculo;
+import com.ceiba.induccion.vehiculos.validaciones.agregar.ReglaAgregarVehiculo;
+import com.ceiba.induccion.vehiculos.validaciones.agregar.ReglasAgregarVehiculo;
 
 
 @Component

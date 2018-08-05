@@ -10,8 +10,8 @@ import com.ceiba.induccion.utils.factura.FacturaFactory;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
-import com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo.ReglaEliminarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo.ReglasEliminarVehiculo;
+import com.ceiba.induccion.vehiculos.validaciones.eliminar.ReglaEliminarVehiculo;
+import com.ceiba.induccion.vehiculos.validaciones.eliminar.ReglasEliminarVehiculo;
 
 
 @Component

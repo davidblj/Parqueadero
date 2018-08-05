@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo;
+package com.ceiba.induccion.vehiculos.validaciones.agregar;
 
 import com.ceiba.induccion.utils.Constants;
 import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;

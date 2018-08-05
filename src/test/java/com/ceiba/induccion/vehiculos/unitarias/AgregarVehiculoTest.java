@@ -28,8 +28,8 @@ import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglaAgregarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ReglasAgregarVehiculo;
+import com.ceiba.induccion.vehiculos.validaciones.agregar.ReglaAgregarVehiculo;
+import com.ceiba.induccion.vehiculos.validaciones.agregar.ReglasAgregarVehiculo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

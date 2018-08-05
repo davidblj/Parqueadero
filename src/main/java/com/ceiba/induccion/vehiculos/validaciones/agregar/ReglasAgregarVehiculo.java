@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo;
+package com.ceiba.induccion.vehiculos.validaciones.agregar;
 
 import java.util.ArrayList;
 import java.util.List;

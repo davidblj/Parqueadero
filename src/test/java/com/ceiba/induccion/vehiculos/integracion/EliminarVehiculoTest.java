@@ -133,8 +133,7 @@ public class EliminarVehiculoTest {
 		// act
 		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
 		
-		// assert
-		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placaCarro);
+		// assert		
 		boolean registroExitoso = factura.getHoras() == 1 &&
 				  				  factura.getDias() == 0;		
 						

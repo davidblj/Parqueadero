@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.unitarias.validaciones;
+package com.ceiba.induccion.vehiculos.unitarias.validaciones.agregar;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -19,7 +19,7 @@ import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo.ExistenciaValidacion;
+import com.ceiba.induccion.vehiculos.validaciones.agregar.ExistenciaValidacion;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

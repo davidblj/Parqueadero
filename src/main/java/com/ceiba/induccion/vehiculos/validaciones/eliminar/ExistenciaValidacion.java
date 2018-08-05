@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo;
+package com.ceiba.induccion.vehiculos.validaciones.eliminar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

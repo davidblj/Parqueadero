@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones.eliminarVehiculo;
+package com.ceiba.induccion.vehiculos.validaciones.eliminar;
 
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 

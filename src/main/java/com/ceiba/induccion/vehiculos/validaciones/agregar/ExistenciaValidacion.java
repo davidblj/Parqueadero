@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones.agregarVehiculo;
+package com.ceiba.induccion.vehiculos.validaciones.agregar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
