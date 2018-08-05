@@ -24,6 +24,7 @@ import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.utils.Constants;
+import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.utils.factura.Factura;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
@@ -64,7 +65,7 @@ public class EliminarVehiculoTest {
 		parqueaderoRepositorio.save(new ParqueaderoEntidad(
 				Constants.PARQUEADERO_CEIBA, 
 				Constants.PARQUEADERO_CEIBA_LIMITE_CARROS, 
-				Constants.PARQUEADERO_CEIBA_LIMITE_MOTOS));	
+				Constants.PARQUEADERO_CEIBA_LIMITE_MOTOS));
 		
 		VehiculoModelo carro = new VehiculoTestDataBuilder()				
 				.conFechaDeIngreso(obtenerFechaDeIngreso())
@@ -89,7 +90,48 @@ public class EliminarVehiculoTest {
 				moto.getCilindraje(),
 				moto.getFechaDeIngreso()));
 	}
+	
+	@Test
+	public void validarSalidaConVehiculoSinRegistro() {
+		
+		try {
+			// act
+			eliminarVehiculo.ejecutar("TCB724");
 			
+		} catch (ParametrosInvalidos e) {
+			// assert
+			assertEquals("El vehiculo actualmente no se encuentra al interior del parqueadero", e.getMessage());
+		}
+	}			
+		
+	@Test
+	public void validarSalidaConVehiculoFacturado() {
+		
+		// arrange
+		String carroFacturado = "TCB427";
+		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()				
+				.conFechaDeSalida(Calendar.getInstance())
+				.conPlaca(carroFacturado)
+				.build();						
+		
+		vehiculoRepositorio.save(new VehiculoEntidad(
+				vehiculo.getPlaca(), 
+				vehiculo.getTipo(), 
+				vehiculo.getCilindraje(), 
+				vehiculo.getFechaDeIngreso(),
+				vehiculo.getFechaDeSalida()));
+				
+		try {
+			// act
+			eliminarVehiculo.ejecutar(carroFacturado);
+			
+		} catch (ParametrosInvalidos e) {
+			// assert
+			assertEquals("El vehiculo actualmente no se encuentra al interior del parqueadero", e.getMessage());
+		}
+	}
+		
+		
 	@Test
 	public void registrarSalidaEnMenosDeUnaHora() {
 		

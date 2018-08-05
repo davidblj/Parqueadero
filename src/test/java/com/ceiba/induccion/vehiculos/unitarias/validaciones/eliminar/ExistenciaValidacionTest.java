@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
+import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
@@ -46,32 +47,13 @@ public class ExistenciaValidacionTest {
 			// act
 			existenciaValidacion.validate(placa);
 			
-		} catch (Exception e) {
+		} catch (ParametrosInvalidos e) {
 			// assert
 			assertEquals("El vehiculo actualmente no se encuentra al interior del parqueadero", e.getMessage());
 		}				
 	}
-	
-	@Test
-	public void validarVehiculoConRegistroSinFacturar() {
-		
-		// arrange
-		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(null);
-		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()
-				.conFechaDeSalida(null)
-				.build();
-		
-		try {
-			// act
-			existenciaValidacion.validate(placa);
 			
-		} catch (Exception e) {
-			// assert
-			assertEquals("El vehiculo actualmente no se encuentra al interior del parqueadero", e.getMessage());
-		}
-	}
-	
-	@Test(expected = Test.None.class)
+	@Test
 	public void validarVehiculoConRegistroYFacturado() {
 		
 		// arrange
@@ -83,10 +65,34 @@ public class ExistenciaValidacionTest {
 				vehiculo.getPlaca(), 
 				vehiculo.getTipo(), 
 				vehiculo.getCilindraje(), 
+				vehiculo.getFechaDeIngreso(),
+				vehiculo.getFechaDeSalida());
+		
+		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(vehiculoEntidad);
+		
+		try {
+			// act
+			existenciaValidacion.validate(placa);
+			
+		} catch (ParametrosInvalidos e) {
+			// assert
+			assertEquals("El vehiculo actualmente no se encuentra al interior del parqueadero", e.getMessage());
+		}					
+	}
+	
+	@Test(expected = Test.None.class)
+	public void validarVehiculoConRegistroSinFacturar() {
+		
+		// arrange
+		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();
+		VehiculoEntidad vehiculoEntidad = new VehiculoEntidad(
+				vehiculo.getPlaca(), 
+				vehiculo.getTipo(), 
+				vehiculo.getCilindraje(), 
 				vehiculo.getFechaDeIngreso());
 		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(vehiculoEntidad);
 		
 		// act
-		existenciaValidacion.validate(placa);					
+		existenciaValidacion.validate(placa);		
 	}
 }

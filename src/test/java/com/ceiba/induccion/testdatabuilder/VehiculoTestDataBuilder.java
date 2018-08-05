@@ -23,7 +23,7 @@ public class VehiculoTestDataBuilder {
 	}
 	
 	public VehiculoModelo build() {
-		return new VehiculoModelo(placa, tipo, cilindraje, fechaDeIngreso);
+		return new VehiculoModelo(placa, tipo, cilindraje, fechaDeIngreso, fechaDeSalida);
 	}
 	
 	public VehiculoTestDataBuilder conTipo(String tipo) {

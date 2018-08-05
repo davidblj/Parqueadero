@@ -13,6 +13,13 @@ public class VehiculoModelo {
 	Calendar fechaDeSalida;	
 	int cilindraje;
 	
+	public VehiculoModelo(String placa, String tipo, int cilindraje, Calendar fechaDeIngreso, Calendar fechaDeSalida) {
+		this.placa = placa;
+		this.tipo = tipo;
+		this.cilindraje = cilindraje;
+		this.fechaDeIngreso = fechaDeIngreso;
+		this.fechaDeSalida = fechaDeSalida;
+	}
 	
 	public VehiculoModelo(String placa, String tipo, int cilindraje, Calendar fechaDeIngreso) {
 		this.placa = placa;
