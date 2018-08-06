@@ -92,7 +92,7 @@ public class EliminarVehiculoTest {
 	}
 	
 	@Test
-	public void validarSalidaConVehiculoSinRegistro() {
+	public void registrarSalidaConVehiculoSinRegistro() {
 		
 		try {
 			// act
@@ -105,12 +105,13 @@ public class EliminarVehiculoTest {
 	}			
 		
 	@Test
-	public void validarSalidaConVehiculoFacturado() {
+	public void registrarSalidaConVehiculoFacturado() {
 		
 		// arrange
 		String carroFacturado = "TCB427";
+		Calendar placeholder = Calendar.getInstance();
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()				
-				.conFechaDeSalida(Calendar.getInstance())
+				.conFechaDeSalida(placeholder)
 				.conPlaca(carroFacturado)
 				.build();						
 		

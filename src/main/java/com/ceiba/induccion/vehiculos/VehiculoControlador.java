@@ -42,6 +42,13 @@ public class VehiculoControlador {
 		List<VehiculoModelo> vehiculos = servicio.listar();
 		return ResponseEntity.accepted().body(vehiculos);	
 	}
+	
+	@RequestMapping(value="{placa}", method=RequestMethod.GET, produces="application/json")
+	public ResponseEntity<?> consultar(@PathVariable String placa) {
+		
+		VehiculoDTO vehiculo = obtenerVehiculo.ejecutar(placa);
+		return ResponseEntity.status(HttpStatus.OK).body(vehiculo);
+	}
 
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public ResponseEntity<?> crear(@RequestBody VehiculoDTO vehiculo) {	
@@ -68,12 +75,5 @@ public class VehiculoControlador {
 		} catch (ParametrosInvalidos e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}		
-	}
-	
-	@RequestMapping(value="{placa}", method=RequestMethod.GET, produces="application/json")
-	public ResponseEntity<?> consultar(@PathVariable String placa) {
-		
-		VehiculoDTO vehiculo = obtenerVehiculo.ejecutar(placa);
-		return ResponseEntity.status(HttpStatus.OK).body(vehiculo);
-	}
+	}	
 }

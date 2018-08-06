@@ -33,8 +33,7 @@ import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class AgregarVehiculoTest {
-	
-	
+		
 	@Autowired
 	private AgregarVehiculo agregarVehiculo;
 	
@@ -61,7 +60,7 @@ public class AgregarVehiculoTest {
 	}
 				
 	@Test
-	public void testAgregarVehiculoConTipoInvalido() {		
+	public void agregarVehiculoConTipoInvalido() {		
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conTipo("desconocido").build();
@@ -79,7 +78,7 @@ public class AgregarVehiculoTest {
 	}	
 		
 	@Test
-	public void testAgregarVehiculoConParqueaderoSinEspacio() {
+	public void agregarVehiculoConParqueaderoSinEspacio() {
 		
 		// arrange
 		ParqueaderoEntidad parqueadero = parqueaderoRepositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA);
@@ -101,7 +100,7 @@ public class AgregarVehiculoTest {
 	}
 	
 	@Test
-	public void testAgregarVehiculoRepetido() {
+	public void agregarVehiculoRepetido() {
 		
 		// arrange
 		VehiculoModelo vehiculoRepetido = new VehiculoTestDataBuilder().build();
@@ -126,7 +125,7 @@ public class AgregarVehiculoTest {
 	}
 	
 	@Test
-	public void testAgregarVehiculoEnDiaInhabilitado() {
+	public void agregarVehiculoEnDiaInhabilitado() {
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
@@ -147,7 +146,7 @@ public class AgregarVehiculoTest {
 	}
 	
 	@Test
-	public void testAgregarVehiculoEnDiaHabilitado() {
+	public void agregarVehiculoEnDiaHabilitado() {
 		
 		// arrange
 		VehiculoModelo nuevoVehiculo = new VehiculoTestDataBuilder().conPlaca("ABC211").build();
