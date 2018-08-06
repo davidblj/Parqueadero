@@ -33,10 +33,7 @@ public class AgregarVehiculo {
 	@Autowired
 	private Calendario calendario;
 		
-	public void ejecutar(VehiculoDTO vehiculoDTO) {
-		
-		// TODO: check syntax
-		// TODO: check clean code		
+	public void ejecutar(VehiculoDTO vehiculoDTO) {		
 				
 		VehiculoModelo vehiculo = apiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);			
 		
@@ -45,20 +42,16 @@ public class AgregarVehiculo {
 		}
 		
 		agregarFechaDeIngreso(vehiculo);
-		liberarCeldaSegunVehiculo(vehiculo);
+		ocuparCeldaSegunVehiculo(vehiculo);
 		vehiculoRepositorio.save(apiBuilder.vehiculoToVehiculoEntidad(vehiculo));
-	}
-	
-	// utils
+	}	
 	
 	private void agregarFechaDeIngreso(VehiculoModelo vehiculo) {
 		
 		vehiculo.setFechaDeIngreso(calendario.obtenerFechaActual());
 	}
 	
-	private void liberarCeldaSegunVehiculo(VehiculoModelo vehiculo) {
-		
-		// TODO: research the entity class management
+	private void ocuparCeldaSegunVehiculo(VehiculoModelo vehiculo) {		
 				
 		ParqueaderoEntidad parqueadero = parqueaderoRepositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA);	
 		modificarParqueaderoSegunVehiculo(parqueadero, vehiculo);		

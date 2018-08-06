@@ -130,8 +130,7 @@ public class EliminarVehiculoTest {
 			assertEquals("El vehiculo actualmente no se encuentra al interior del parqueadero", e.getMessage());
 		}
 	}
-		
-		
+				
 	@Test
 	public void registrarSalidaEnMenosDeUnaHora() {
 		
