@@ -35,7 +35,8 @@ public class ListarVehiculosTest {
 		
 		// arrange
 		Calendar placeholder = Calendar.getInstance();
-		VehiculoModelo vehiculoFacturado = new VehiculoTestDataBuildeoModelo vehiculoNoFact DeIngreso(placeholder)
+		VehiculoModelo vehiculoFacturado = new VehiculoTestDataBuilder()
+				.conFechaDeIngreso(placeholder)
 				.conFechaDeSalida(placeholder)				
 				.build();
 		vehiculoRepositorio.save(new VehiculoEntidad(

@@ -29,7 +29,7 @@ import com.ceiba.induccion.utils.factura.Factura;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
-import com.ceiba.induccion.vehiculos.servicios.EliminarVehiculo;
+import com.ceiba.induccion.vehiculos.VehiculoServicio;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -40,10 +40,10 @@ public class EliminarVehiculoTest {
 	private ParqueaderoRepositorio parqueaderoRepositorio;
 	
 	@Autowired
-	private VehiculoRepositorio vehiculoRepositorio;
+	private VehiculoRepositorio vehiculoRepositorio;	
 	
 	@Autowired
-	private EliminarVehiculo eliminarVehiculo;
+	private VehiculoServicio servicio;
 	
 	@MockBean
 	Calendario calendario;
@@ -96,7 +96,7 @@ public class EliminarVehiculoTest {
 		
 		try {
 			// act
-			eliminarVehiculo.ejecutar("TCB724");
+			servicio.eliminar("TCB724");
 			
 		} catch (ParametrosInvalidos e) {
 			// assert
@@ -124,7 +124,7 @@ public class EliminarVehiculoTest {
 				
 		try {
 			// act
-			eliminarVehiculo.ejecutar(carroFacturado);
+			servicio.eliminar(carroFacturado);
 			
 		} catch (ParametrosInvalidos e) {
 			// assert
@@ -148,7 +148,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert		
 		boolean registroExitoso = factura.getHoras() == 1 &&
@@ -173,7 +173,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert		
 		boolean registroExitoso = factura.getHoras() == 1 &&
@@ -198,7 +198,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert
 		boolean registroExitoso = factura.getHoras() == 9 &&
@@ -223,7 +223,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert
 		boolean registroExitoso = factura.getHoras() == 9 &&
@@ -248,7 +248,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert
 		boolean registroExitoso = factura.getHoras() == 0 &&
@@ -273,7 +273,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert
 		boolean registroExitoso = factura.getHoras() == 0 &&
@@ -298,7 +298,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert
 		boolean registroExitoso = factura.getHoras() == 1 &&
@@ -323,7 +323,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert
 		boolean registroExitoso = factura.getHoras() == 0 &&
@@ -348,7 +348,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert
 		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placaCarro);		
@@ -375,7 +375,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert
 		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placaCarro);		
@@ -402,7 +402,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaCarro);		
+		Factura factura = servicio.eliminar(placaCarro);
 		
 		// assert
 		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placaCarro);		
@@ -429,7 +429,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaMoto);		
+		Factura factura = servicio.eliminar(placaMoto);
 		
 		// assert
 		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placaMoto);		
@@ -456,7 +456,7 @@ public class EliminarVehiculoTest {
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
 		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaMoto);		
+		Factura factura = servicio.eliminar(placaMoto);
 		
 		// assert
 		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placaMoto);		
@@ -482,8 +482,8 @@ public class EliminarVehiculoTest {
 		
 		when(calendario.obtenerFechaActual()).thenReturn(fechaDeSalida);
 		
-		// act
-		Factura factura = eliminarVehiculo.ejecutar(placaMoto);		
+		// act		
+		Factura factura = servicio.eliminar(placaMoto);
 		
 		// assert
 		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placaMoto);		

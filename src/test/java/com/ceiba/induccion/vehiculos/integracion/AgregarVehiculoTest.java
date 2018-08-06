@@ -27,21 +27,21 @@ import com.ceiba.induccion.vehiculos.VehiculoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
-import com.ceiba.induccion.vehiculos.servicios.AgregarVehiculo;
+import com.ceiba.induccion.vehiculos.VehiculoServicio;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class AgregarVehiculoTest {
-		
-	@Autowired
-	private AgregarVehiculo agregarVehiculo;
+public class AgregarVehiculoTest {		
 	
 	@Autowired
 	private ParqueaderoRepositorio parqueaderoRepositorio;
 	
 	@Autowired
 	private VehiculoRepositorio vehiculoRepositorio;
+	
+	@Autowired
+	private VehiculoServicio servicio;
 	
 	@MockBean
 	private Calendario calendario;
@@ -68,7 +68,7 @@ public class AgregarVehiculoTest {
 				
 		try {
 			// act
-			agregarVehiculo.ejecutar(nuevoVehiculoDTO);
+			servicio.agregar(nuevoVehiculoDTO);
 			fail("Se esperaba una excepcion (ParametrosInvalidos)");
 			
 		} catch (ParametrosInvalidos e) {			
@@ -90,7 +90,7 @@ public class AgregarVehiculoTest {
 				
 		try {
 			// act
-			agregarVehiculo.ejecutar(nuevoVehiculoDTO);
+			servicio.agregar(nuevoVehiculoDTO);
 			fail("Se esperaba una excepcion (Conflicto)");
 			
 		} catch (Conflicto e) {						
@@ -115,7 +115,7 @@ public class AgregarVehiculoTest {
 				
 		try {
 			// act			
-			agregarVehiculo.ejecutar(vehiculoRepetidoDTO);
+			servicio.agregar(vehiculoRepetidoDTO);
 			fail("Se esperaba una excepcion (ParametrosInvalidoss)");
 			
 		} catch (ParametrosInvalidos e) {						
@@ -136,7 +136,7 @@ public class AgregarVehiculoTest {
 		
 		try {
 			// act			
-			agregarVehiculo.ejecutar(nuevoVehiculoDTO);
+			servicio.agregar(nuevoVehiculoDTO);
 			fail("Se esperaba una excepcion (Conflicto)");
 			
 		} catch (Conflicto e) {
@@ -156,7 +156,7 @@ public class AgregarVehiculoTest {
 		when(calendario.obtenerDiaActual()).thenReturn(diaLunes);
 				
 		// act
-		agregarVehiculo.ejecutar(nuevoVehiculoDTO);		
+		servicio.agregar(nuevoVehiculoDTO);
 			
 		// assert
 		VehiculoEntidad vehiculoIngresado = vehiculoRepositorio.findByPlaca(nuevoVehiculo.getPlaca());
@@ -173,13 +173,14 @@ public class AgregarVehiculoTest {
 		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(nuevoVehiculo.getPlaca(), nuevoVehiculo.getTipo(), nuevoVehiculo.getCilindraje());
 		
 		// act
-		agregarVehiculo.ejecutar(nuevoVehiculoDTO);		
+		servicio.agregar(nuevoVehiculoDTO);
 
 		// assert		
 		VehiculoEntidad vehiculoIngresado = vehiculoRepositorio.findByPlaca(nuevoVehiculo.getPlaca());
 		ParqueaderoEntidad parqueaderoModificado = parqueaderoRepositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA); 
 		
-		boolean insercionExitosa = parqueaderoModificado.getCarros() == 1 && vehiculoIngresado != null;		
+		boolean insercionExitosa = parqueaderoModificado.getCarros() == 1 && 
+								   vehiculoIngresado != null;		
 		assertTrue(insercionExitosa);
 	}
 }
