@@ -17,8 +17,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
+import com.ceiba.induccion.vehiculos.VehiculoEntidad;
+import com.ceiba.induccion.vehiculos.VehiculoIngresadoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
+import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
+import com.ceiba.induccion.vehiculos.VehiculoServicio;
 import com.ceiba.induccion.vehiculos.validaciones.agregar.ExistenciaValidacion;
 
 @SpringBootTest
@@ -30,15 +33,20 @@ public class ExistenciaValidacionTest {
 	ExistenciaValidacion existenciaValidacion;	
 	
 	@MockBean
-	ObtenerVehiculo obtenerVehiculo;
+	VehiculoRepositorio vehiculoRepositorio;
 	
 	@Test
 	public void validarVehiculoEnExistencia() {
 	
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();
-		VehiculoDTO nuevoVehiculoDTO= new VehiculoDTO(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
-		when(obtenerVehiculo.ejecutar(anyString())).thenReturn(nuevoVehiculoDTO);
+		VehiculoDTO nuevoVehiculoDTO = new VehiculoDTO(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
+		VehiculoEntidad vehiculoIngresado = new VehiculoEntidad(
+				nuevoVehiculoDTO.getPlaca(), 
+				nuevoVehiculoDTO.getTipo(), 
+				nuevoVehiculoDTO.getCilindraje(),
+				null);
+		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(vehiculoIngresado);
 		
 		try {
 			// act
@@ -55,7 +63,7 @@ public class ExistenciaValidacionTest {
 	
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();		
-		when(obtenerVehiculo.ejecutar(anyString())).thenReturn(null);
+		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(null);
 			
 		// act
 		existenciaValidacion.validate(vehiculo);			

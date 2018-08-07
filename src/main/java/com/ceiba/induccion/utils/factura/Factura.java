@@ -18,9 +18,7 @@ public class Factura {
 	protected int dias = 0;		
 	protected int precioFactura;
 	private Calendar fechaDeIngreso;
-	private Calendar fechaDeSalida;
-	
-	// TODO: delete the reset invocation
+	private Calendar fechaDeSalida;	
 	
 	public void generar(VehiculoModelo vehiculo) {
 		

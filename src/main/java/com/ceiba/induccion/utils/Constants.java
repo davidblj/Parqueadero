@@ -1,6 +1,6 @@
 package com.ceiba.induccion.utils;
 
-public class Constants {
+public final class Constants {
 
 	public static final String VEHICULO_CARRO = "CARRO";
 	public static final String VEHICULO_MOTO = "MOTO";

@@ -4,20 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
-import com.ceiba.induccion.vehiculos.VehiculoDTO;
+import com.ceiba.induccion.vehiculos.VehiculoEntidad;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
+import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 
 @Component("ExistenciaValidacionAgregarVehiculo")
 public class ExistenciaValidacion implements ReglaAgregarVehiculo {	
 		
 	@Autowired
-	ObtenerVehiculo obtenerVehiculo;
+	private VehiculoRepositorio vehiculoRepositorio;
 	
 	@Override
 	public void validate(VehiculoModelo data) {
 		
-		VehiculoDTO vehiculo = obtenerVehiculo.ejecutar(data.getPlaca());
+		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(data.getPlaca());
 		boolean vehiculoExiste = vehiculo != null;
 		
 		if (vehiculoExiste)

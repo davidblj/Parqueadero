@@ -20,6 +20,7 @@ public class VehiculoTestDataBuilder {
 	public VehiculoTestDataBuilder() {
 		this.placa = PLACA;
 		this.tipo = TIPO;
+		this.cilindraje = CILINDRAJE;
 	}
 	
 	public VehiculoModelo build() {

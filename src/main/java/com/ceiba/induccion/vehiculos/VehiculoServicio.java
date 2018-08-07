@@ -47,7 +47,7 @@ public class VehiculoServicio {
 		
 	public void agregar(VehiculoDTO vehiculoDTO) {
 		
-		VehiculoModelo vehiculo = apiBuilder.vehiculoDTOToVehiculo(vehiculoDTO);			
+		VehiculoModelo vehiculo = apiBuilder.vehiculoDTOToVehiculoModelo(vehiculoDTO);			
 		
 		for (ReglaAgregarVehiculo rule: reglasAgregarVehiculo.validacionesAgregarVehiculo()) {
 			rule.validate(vehiculo);
@@ -55,7 +55,7 @@ public class VehiculoServicio {
 		
 		agregarFechaDeIngreso(vehiculo);
 		ocuparCeldaSegunVehiculo(vehiculo);
-		vehiculoRepositorio.save(apiBuilder.vehiculoToVehiculoEntidad(vehiculo));
+		vehiculoRepositorio.save(apiBuilder.vehiculoModeloToVehiculoEntidad(vehiculo));
 	}
 	
 	@Transactional
@@ -72,10 +72,16 @@ public class VehiculoServicio {
 		return factura;
 	}
 	
-	public List<VehiculoModelo> listar() {
+	public List<VehiculoIngresadoDTO> listar() {
 		
 		List<VehiculoEntidad> vehiculos = vehiculoRepositorio.findByFechaDeSalidaIsNull();
-		return conversorEntidadModelo(vehiculos);
+		return conversor(vehiculos);
+	}
+	
+	public VehiculoIngresadoDTO consultar(String placa) {
+		
+		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placa);
+		return apiBuilder.vehiculoEntidadToVehiculoIngresadoDT(vehiculo);
 	}
 	
 	// utilities
@@ -105,7 +111,7 @@ public class VehiculoServicio {
 	private VehiculoModelo encontrarVehiculo(String placa) {	
 		
 		VehiculoEntidad vehiculoEntidad = vehiculoRepositorio.findByPlaca(placa);	
-		return apiBuilder.vehiculoEntidadToVehiculo(vehiculoEntidad);
+		return apiBuilder.vehiculoEntidadToVehiculoModelo(vehiculoEntidad);
 	}
 	
 	private Factura generarFactura(VehiculoModelo vehiculo) {
@@ -115,12 +121,12 @@ public class VehiculoServicio {
 		return factura;
 	}
 	
-	private List<VehiculoModelo> conversorEntidadModelo(List<VehiculoEntidad> vehiculos) {
+	private List<VehiculoIngresadoDTO> conversor(List<VehiculoEntidad> vehiculos) {
 		
-		List<VehiculoModelo> listaDeVehiculos = new ArrayList<>();
+		List<VehiculoIngresadoDTO> listaDeVehiculos = new ArrayList<>();
 		
 		for (VehiculoEntidad vehiculoEntidad: vehiculos) {
-			VehiculoModelo vehiculoModelo = apiBuilder.vehiculoEntidadToVehiculo(vehiculoEntidad);
+			VehiculoIngresadoDTO vehiculoModelo = apiBuilder.vehiculoEntidadToVehiculoIngresadoDT(vehiculoEntidad);
 			listaDeVehiculos.add(vehiculoModelo);
 		}
 		
