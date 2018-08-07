@@ -1,6 +1,9 @@
 package com.ceiba.induccion.vehiculos;
 
+import java.net.URI;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +25,8 @@ import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
 @CrossOrigin
 public class VehiculoControlador {		
 	
+	 private final static Logger logger = Logger.getLogger(VehiculoControlador.class.getName());
+	 
 	@Autowired
 	ObtenerVehiculo obtenerVehiculo;		
 	
@@ -32,39 +37,45 @@ public class VehiculoControlador {
 	public ResponseEntity<List<VehiculoModelo>> listar() {	
 		
 		List<VehiculoModelo> vehiculos = servicio.listar();
-		return ResponseEntity.accepted().body(vehiculos);	
+		return ResponseEntity.status(HttpStatus.OK).body(vehiculos);	
 	}
 	
 	@RequestMapping(value="{placa}", method=RequestMethod.GET, produces="application/json")
-	public ResponseEntity<?> consultar(@PathVariable String placa) {
+	public ResponseEntity<VehiculoDTO> consultar(@PathVariable String placa) {
 		
 		VehiculoDTO vehiculo = obtenerVehiculo.ejecutar(placa);
 		return ResponseEntity.status(HttpStatus.OK).body(vehiculo);
 	}
 
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<?> crear(@RequestBody VehiculoDTO vehiculo) {	
+	public ResponseEntity<String> crear(@RequestBody VehiculoDTO vehiculo) {	
 		
 		try {			
 			servicio.agregar(vehiculo);
-			return ResponseEntity.accepted().body("");	
+			return ResponseEntity.status(HttpStatus.CREATED).body("recurso creado");	
 			
 		} catch (ParametrosInvalidos e) {
+			
+			logger.log(Level.WARNING, e.toString(), e);
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());	
 			
 		} catch (Conflicto e) {
+			
+			logger.log(Level.WARNING, e.toString(), e);
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
 		}
 	}			
 	
 	@RequestMapping(value="{placa}", method=RequestMethod.DELETE, produces="application/json")
-	public ResponseEntity<?> eliminar(@PathVariable String placa) {
+	public ResponseEntity<Object> eliminar(@PathVariable String placa) {
 		
 		try {
 			Factura factura = servicio.eliminar(placa);
 			return ResponseEntity.status(HttpStatus.OK).body(factura);
 			
 		} catch (ParametrosInvalidos e) {
+			
+			logger.log(Level.WARNING, e.toString(), e);
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}		
 	}	

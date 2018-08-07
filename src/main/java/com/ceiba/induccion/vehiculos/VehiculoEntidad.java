@@ -62,7 +62,7 @@ public class VehiculoEntidad {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) throws Exception {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	

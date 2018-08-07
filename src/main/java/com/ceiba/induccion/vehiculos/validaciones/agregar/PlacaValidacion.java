@@ -21,8 +21,12 @@ public class PlacaValidacion implements ReglaAgregarVehiculo {
 		String placa = data.getPlaca();
 		
 		char primeraLetra = placa.charAt(0);				
-		boolean esLetra_A = primeraLetra == 'A';				
-		boolean placaEsValida = esLetra_A ? esUnDiaValido() : true;
+		boolean esLetraA = primeraLetra == 'A';				
+		
+		boolean placaEsValida = true;
+		if (esLetraA) {
+			placaEsValida = esUnDiaValido();
+		}
 		
 		if (!placaEsValida)
 			throw new Conflicto("El vehiculo solamente puede ingresar los lunes y domingos");
@@ -30,8 +34,6 @@ public class PlacaValidacion implements ReglaAgregarVehiculo {
 	
 	private boolean esUnDiaValido() {		
 		int diaActual = calendario.obtenerDiaActual();							
-		boolean esUnDiaHabil = 	diaActual == Calendar.MONDAY || 
-								diaActual == Calendar.SUNDAY;		
-		return esUnDiaHabil;
+		return diaActual == Calendar.MONDAY || diaActual == Calendar.SUNDAY;				
 	}
 }

@@ -58,7 +58,7 @@ public class Factura {
 	
 	private float convertirMiliEnHoras(long milisegundos) {		
 		
-		float equivalencia = 1000 * 60 * 60;  
+		float equivalencia = ((float) 1000) * 60 * 60;  
 		return milisegundos/equivalencia;		
 	}
 	
