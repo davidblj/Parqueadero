@@ -1,12 +1,11 @@
 package com.ceiba.induccion.utils;
 
-import com.ceiba.induccion.vehiculos.VehiculoEntidad;
-import com.ceiba.induccion.vehiculos.VehiculoIngresadoDTO;
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
-
 import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.vehiculos.VehiculoDTO;
+import com.ceiba.induccion.vehiculos.VehiculoEntidad;
+import com.ceiba.induccion.vehiculos.VehiculoIngresadoDTO;
+import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
 public class ApiBuilder {

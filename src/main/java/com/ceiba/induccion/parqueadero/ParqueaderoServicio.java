@@ -18,8 +18,7 @@ public class ParqueaderoServicio implements ImpParqueaderoServicio  {
 		ParqueaderoEntidad parqueadero = repositorio.findOneByNombre(Constants.PARQUEADERO_CEIBA);
 		return parqueaderoEstaDisponible(parqueadero, vehiculo.getTipo());			
 	}
-	
-	
+		
 	private boolean parqueaderoEstaDisponible(ParqueaderoEntidad parqueadero, String tipo) {	
 		
 		if (tipo.equals(Constants.VEHICULO_MOTO))

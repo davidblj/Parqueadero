@@ -19,7 +19,17 @@ public class ParqueaderoTestDataBuilder {
 		this.limite_motos = LIMITE_MOTOS;
 	}
 	
+	public ParqueaderoTestDataBuilder conLimiteDeCarros(int limite_carros) {
+		this.limite_carros = limite_carros;
+		return this;
+	}
+	
+	public ParqueaderoTestDataBuilder conLimiteDeMotos(int limite_motos) {
+		this.limite_motos = limite_motos;
+		return this;
+	}
+	
 	public ParqueaderoModelo build() {
 		return new ParqueaderoModelo(nombre, limite_carros, limite_motos);
-	}
+	}	
 }
