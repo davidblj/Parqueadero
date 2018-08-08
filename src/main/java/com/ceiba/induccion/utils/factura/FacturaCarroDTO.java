@@ -1,7 +1,5 @@
 package com.ceiba.induccion.utils.factura;
 
-import java.util.Calendar;
-
 import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.vehiculos.VehiculoModelo;

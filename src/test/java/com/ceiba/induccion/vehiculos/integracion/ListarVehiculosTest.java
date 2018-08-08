@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.vehiculos.VehiculoEntidad;
+import com.ceiba.induccion.vehiculos.VehiculoIngresadoDTO;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 import com.ceiba.induccion.vehiculos.VehiculoServicio;
@@ -47,7 +48,7 @@ public class ListarVehiculosTest {
 				vehiculoFacturado.getFechaDeSalida()));
 		
 		// act
-		List<VehiculoModelo> vehiculos = servicio.listar();
+		List<VehiculoIngresadoDTO> vehiculos = servicio.listar();
 		
 		// assert
 		assertEquals(0, vehiculos.size());
@@ -70,7 +71,7 @@ public class ListarVehiculosTest {
 				vehiculoNoFacturado.getFechaDeSalida()));
 		
 		// act
-		List<VehiculoModelo> vehiculos = servicio.listar();
+		List<VehiculoIngresadoDTO> vehiculos = servicio.listar();
 		
 		// assert
 		assertEquals(1, vehiculos.size());

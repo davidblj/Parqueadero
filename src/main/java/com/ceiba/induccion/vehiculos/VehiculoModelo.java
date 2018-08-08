@@ -1,7 +1,6 @@
 package com.ceiba.induccion.vehiculos;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import com.ceiba.induccion.utils.Constants;
 

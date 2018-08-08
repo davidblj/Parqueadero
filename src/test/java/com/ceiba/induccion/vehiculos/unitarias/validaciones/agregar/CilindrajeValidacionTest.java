@@ -12,40 +12,45 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
+import com.ceiba.induccion.utils.Constants;
 import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.validaciones.agregar.TipoValidacion;
+import com.ceiba.induccion.vehiculos.validaciones.agregar.CilindrajeValidacion;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class TipoValidacionTest {
-			
-	@Test
-	public void validarVehiculoDeTipoInvalido() {
+public class CilindrajeValidacionTest {	
+	
+	@Test(expected = Test.None.class)
+	public void validarMotosConCilindraje() {
+		// arrange
+		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()
+				.conTipo(Constants.VEHICULO_MOTO)
+				.conCilindraje(550)
+				.build();
+		
+		// act
+		new CilindrajeValidacion().validate(vehiculo);
+	}
+	
+	@Test 
+	public void validarMotosSinCilindraje() {
 		
 		// arrange
-		String tipoInvalido = "desconocido";
-		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().conTipo(tipoInvalido).build();
+		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()
+				.conTipo(Constants.VEHICULO_MOTO)
+				.conCilindraje(0)
+				.build();
 		
 		try {
 			// act
-			new TipoValidacion().validate(vehiculo);
-			fail("Se esperaba una excepcion (ParametrosInvalidos)");
+			new CilindrajeValidacion().validate(vehiculo);
+			fail("Se esperaba una excepsion");
 			
 		} catch (ParametrosInvalidos e) {
 			// assert
-			assertThat(e.getMessage(), is("El tipo del vehiculo deberia ser CARRO o MOTO"));
-		}				
-	}
-	
-	@Test(expected = Test.None.class)
-	public void validarVehiculoDeTipoValido() {
-		
-		// arrange		
-		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();		
-				
-		// act
-		new TipoValidacion().validate(vehiculo);							
+			assertThat(e.getMessage(), is("Las motos tienen que especificar un cilindraje"));
+		}
 	}
 }
