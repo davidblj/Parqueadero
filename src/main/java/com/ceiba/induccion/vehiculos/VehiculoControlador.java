@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ceiba.induccion.utils.ResponseDTO;
 import com.ceiba.induccion.utils.excepciones.Conflicto;
 import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.utils.factura.Factura;
@@ -43,21 +44,24 @@ public class VehiculoControlador {
 	}
 
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<String> crear(@RequestBody VehiculoDTO vehiculo) {	
+	public ResponseEntity<ResponseDTO> crear(@RequestBody VehiculoDTO vehiculo) {	
 		
 		try {			
-			servicio.agregar(vehiculo);
-			return ResponseEntity.status(HttpStatus.CREATED).body("recurso creado");	
+			servicio.agregar(vehiculo);		
+			return ResponseEntity.status(HttpStatus.CREATED)
+					.body(new ResponseDTO(HttpStatus.CREATED, "Recurso creado exitosamente"));	
 			
 		} catch (ParametrosInvalidos e) {
 			
 			LOG.log(Level.WARNING, e.toString(), e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());	
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.body(new ResponseDTO(HttpStatus.BAD_REQUEST, e.getMessage()));	
 			
 		} catch (Conflicto e) {
 			
 			LOG.log(Level.WARNING, e.toString(), e);
-			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.CONFLICT)
+					.body(new ResponseDTO(HttpStatus.CONFLICT, e.getMessage()));
 		}
 	}			
 	
