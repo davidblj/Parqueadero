@@ -19,7 +19,7 @@ import com.ceiba.induccion.vehiculos.servicios.ObtenerVehiculo;
 
 @RestController
 @RequestMapping("/api/1.0/parqueadero/vehiculos")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class VehiculoControlador {		
 	
 	@Autowired

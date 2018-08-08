@@ -8,6 +8,9 @@ public class TipoValidacion implements ReglaAgregarVehiculo {
 
 	@Override
 	public void validate(VehiculoModelo data) {
+		
+		// TODO: validate no type input
+		
 		String tipo = data.getTipo();
 		boolean esValido =	tipo.equals(Constants.VEHICULO_CARRO) || 
 							tipo.equals(Constants.VEHICULO_MOTO);
