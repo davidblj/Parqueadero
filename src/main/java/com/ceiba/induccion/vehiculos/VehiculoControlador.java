@@ -44,24 +44,22 @@ public class VehiculoControlador {
 	}
 
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<ResponseDTO> crear(@RequestBody VehiculoDTO vehiculo) {	
+	public ResponseEntity<String> crear(@RequestBody VehiculoDTO vehiculo) {	
 		
 		try {			
 			servicio.agregar(vehiculo);		
 			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(new ResponseDTO(HttpStatus.CREATED, "Recurso creado exitosamente"));	
+					.body("Recurso creado exitosamente");	
 			
 		} catch (ParametrosInvalidos e) {
 			
 			LOG.log(Level.WARNING, e.toString(), e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body(new ResponseDTO(HttpStatus.BAD_REQUEST, e.getMessage()));	
-			
+			throw e;
+			 
 		} catch (Conflicto e) {
 			
-			LOG.log(Level.WARNING, e.toString(), e);
-			return ResponseEntity.status(HttpStatus.CONFLICT)
-					.body(new ResponseDTO(HttpStatus.CONFLICT, e.getMessage()));
+			LOG.log(Level.WARNING, e.toString(), e);			
+			throw e;
 		}
 	}			
 	
