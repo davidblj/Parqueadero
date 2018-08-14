@@ -39,26 +39,12 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 	public List<VehiculoIngresadoDTO> listar() {
 		
 		List<VehiculoEntidad> vehiculos = vehiculoRepositorio.findByFechaDeSalidaIsNull();
-		return conversor(vehiculos);
+		return apiBuilder.listaVehiculoEntidadToVehiculoDTO(vehiculos);
 	}
 	
 	public VehiculoIngresadoDTO consultar(String placa) {
 		
 		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placa);
 		return apiBuilder.vehiculoEntidadToVehiculoIngresadoDTO(vehiculo);
-	}
-	
-	// utilities					
-	
-	private List<VehiculoIngresadoDTO> conversor(List<VehiculoEntidad> vehiculos) {
-		
-		List<VehiculoIngresadoDTO> listaDeVehiculos = new ArrayList<>();
-		
-		for (VehiculoEntidad vehiculoEntidad: vehiculos) {
-			VehiculoIngresadoDTO vehiculoModelo = apiBuilder.vehiculoEntidadToVehiculoIngresadoDTO(vehiculoEntidad);
-			listaDeVehiculos.add(vehiculoModelo);
-		}
-		
-		return listaDeVehiculos;
-	}
+	}		
 }

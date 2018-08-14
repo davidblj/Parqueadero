@@ -1,4 +1,4 @@
-package com.ceiba.induccion.utils.factura;
+package com.ceiba.induccion.unitarias;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertTrue;
@@ -21,11 +21,13 @@ import com.ceiba.induccion.modelos.VehiculoModelo;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.utils.Constants;
+import com.ceiba.induccion.utils.factura.Factura;
+import com.ceiba.induccion.utils.factura.FacturaFactory;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class facturaTest {
+public class FacturaTest {
 	
 	@MockBean
 	Calendario calendario;

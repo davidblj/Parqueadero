@@ -1,5 +1,8 @@
 package com.ceiba.induccion.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.dto.VehiculoDTO;
@@ -24,5 +27,17 @@ public class ApiBuilder {
 	
 	public VehiculoIngresadoDTO vehiculoEntidadToVehiculoIngresadoDTO(VehiculoEntidad vehiculo) {
 		return new VehiculoIngresadoDTO(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getFechaDeIngreso());
+	}
+	
+	public List<VehiculoIngresadoDTO> listaVehiculoEntidadToVehiculoDTO(List<VehiculoEntidad> vehiculos) {
+		
+		List<VehiculoIngresadoDTO> listaDeVehiculos = new ArrayList<>();
+		
+		for (VehiculoEntidad vehiculoEntidad: vehiculos) {
+			VehiculoIngresadoDTO vehiculoModelo = new ApiBuilder().vehiculoEntidadToVehiculoIngresadoDTO(vehiculoEntidad);
+			listaDeVehiculos.add(vehiculoModelo);
+		}
+		
+		return listaDeVehiculos;
 	}
 }

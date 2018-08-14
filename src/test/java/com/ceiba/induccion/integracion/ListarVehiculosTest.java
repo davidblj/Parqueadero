@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.integracion;
+package com.ceiba.induccion.integracion;
 
 import static org.junit.Assert.assertEquals;
 

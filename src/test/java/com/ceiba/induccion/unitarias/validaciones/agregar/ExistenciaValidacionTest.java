@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.unitarias.validaciones.agregar;
+package com.ceiba.induccion.unitarias.validaciones.agregar;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

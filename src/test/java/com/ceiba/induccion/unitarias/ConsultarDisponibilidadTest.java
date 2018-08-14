@@ -1,4 +1,4 @@
-package com.ceiba.induccion.parqueadero.unitarias;
+package com.ceiba.induccion.unitarias;
 
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertFalse;

@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.unitarias.validaciones.eliminar;
+package com.ceiba.induccion.unitarias.validaciones.eliminar;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
