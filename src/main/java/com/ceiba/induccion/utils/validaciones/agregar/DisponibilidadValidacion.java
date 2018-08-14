@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.excepciones.Conflicto;
 import com.ceiba.induccion.modelos.VehiculoModelo;
-import com.ceiba.induccion.parqueadero.ParqueaderoServicio;
+import com.ceiba.induccion.servicios.ParqueaderoServicio;
 
 @Component
 public class DisponibilidadValidacion implements ReglaAgregarVehiculo {

@@ -1,9 +1,11 @@
-package com.ceiba.induccion.parqueadero;
+package com.ceiba.induccion.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ceiba.induccion.entidades.ParqueaderoEntidad;
 import com.ceiba.induccion.modelos.VehiculoModelo;
+import com.ceiba.induccion.repositorios.ParqueaderoRepositorio;
 import com.ceiba.induccion.utils.Constants;
 
 @Component

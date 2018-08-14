@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ceiba.induccion.dto.VehiculoIngresadoDTO;
 import com.ceiba.induccion.entidades.VehiculoEntidad;
-import com.ceiba.induccion.entidades.VehiculoRepositorio;
 import com.ceiba.induccion.modelos.VehiculoModelo;
-import com.ceiba.induccion.services.VehiculoServicio;
+import com.ceiba.induccion.repositorios.VehiculoRepositorio;
+import com.ceiba.induccion.servicios.VehiculoServicio;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 
 @SpringBootTest

@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.induccion.entidades.VehiculoEntidad;
-import com.ceiba.induccion.entidades.VehiculoRepositorio;
 import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.modelos.VehiculoModelo;
+import com.ceiba.induccion.repositorios.VehiculoRepositorio;
 
 @Component("ExistenciaValidacionAgregarVehiculo")
 public class ExistenciaValidacion implements ReglaAgregarVehiculo {	

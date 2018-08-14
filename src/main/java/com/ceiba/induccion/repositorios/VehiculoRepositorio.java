@@ -1,4 +1,4 @@
-package com.ceiba.induccion.entidades;
+package com.ceiba.induccion.repositorios;
 
 import java.util.Calendar;
 import java.util.List;
@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+
+import com.ceiba.induccion.entidades.VehiculoEntidad;
 
 public interface VehiculoRepositorio extends CrudRepository<VehiculoEntidad, Long> {
 	

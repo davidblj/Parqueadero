@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ceiba.induccion.dto.VehiculoDTO;
 import com.ceiba.induccion.dto.VehiculoIngresadoDTO;
-import com.ceiba.induccion.services.VehiculoServicio;
+import com.ceiba.induccion.servicios.VehiculoServicio;
 import com.ceiba.induccion.utils.factura.Factura;
 
 @RestController

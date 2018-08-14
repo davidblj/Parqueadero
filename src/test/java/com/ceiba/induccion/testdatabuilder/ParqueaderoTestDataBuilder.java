@@ -1,6 +1,6 @@
 package com.ceiba.induccion.testdatabuilder;
 
-import com.ceiba.induccion.parqueadero.ParqueaderoModelo;
+import com.ceiba.induccion.modelos.ParqueaderoModelo;
 import com.ceiba.induccion.utils.Constants;
 
 public class ParqueaderoTestDataBuilder {

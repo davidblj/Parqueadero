@@ -1,4 +1,4 @@
-package com.ceiba.induccion.services;
+package com.ceiba.induccion.servicios;
 
 
 import java.util.ArrayList;
@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ceiba.induccion.dto.VehiculoDTO;
 import com.ceiba.induccion.dto.VehiculoIngresadoDTO;
+import com.ceiba.induccion.entidades.ParqueaderoEntidad;
 import com.ceiba.induccion.entidades.VehiculoEntidad;
-import com.ceiba.induccion.entidades.VehiculoRepositorio;
 import com.ceiba.induccion.modelos.VehiculoModelo;
-import com.ceiba.induccion.parqueadero.ParqueaderoEntidad;
-import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
+import com.ceiba.induccion.repositorios.ParqueaderoRepositorio;
+import com.ceiba.induccion.repositorios.VehiculoRepositorio;
 import com.ceiba.induccion.utils.ApiBuilder;
 import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.utils.Constants;

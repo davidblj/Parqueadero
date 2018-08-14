@@ -1,10 +1,12 @@
-package com.ceiba.induccion.parqueadero;
+package com.ceiba.induccion.repositorios;
 
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+
+import com.ceiba.induccion.entidades.ParqueaderoEntidad;
 
 public interface ParqueaderoRepositorio extends CrudRepository<ParqueaderoEntidad, Long> {
 	public ParqueaderoEntidad findOneByNombre(String nombre);

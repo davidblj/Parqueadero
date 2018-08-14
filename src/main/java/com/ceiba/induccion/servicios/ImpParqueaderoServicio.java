@@ -1,4 +1,4 @@
-package com.ceiba.induccion.parqueadero;
+package com.ceiba.induccion.servicios;
 
 import com.ceiba.induccion.modelos.VehiculoModelo;
 

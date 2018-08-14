@@ -14,11 +14,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ceiba.induccion.entidades.ParqueaderoEntidad;
+import com.ceiba.induccion.modelos.ParqueaderoModelo;
 import com.ceiba.induccion.modelos.VehiculoModelo;
-import com.ceiba.induccion.parqueadero.ParqueaderoEntidad;
-import com.ceiba.induccion.parqueadero.ParqueaderoModelo;
-import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
-import com.ceiba.induccion.parqueadero.ParqueaderoServicio;
+import com.ceiba.induccion.repositorios.ParqueaderoRepositorio;
+import com.ceiba.induccion.servicios.ParqueaderoServicio;
 import com.ceiba.induccion.testdatabuilder.ParqueaderoTestDataBuilder;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.Constants;

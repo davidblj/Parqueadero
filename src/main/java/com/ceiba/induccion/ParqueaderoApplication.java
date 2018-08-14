@@ -5,9 +5,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.ceiba.induccion.entidades.VehiculoRepositorio;
-import com.ceiba.induccion.parqueadero.ParqueaderoEntidad;
-import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
+import com.ceiba.induccion.entidades.ParqueaderoEntidad;
+import com.ceiba.induccion.repositorios.ParqueaderoRepositorio;
+import com.ceiba.induccion.repositorios.VehiculoRepositorio;
 import com.ceiba.induccion.utils.Constants;
 
 @SpringBootApplication
