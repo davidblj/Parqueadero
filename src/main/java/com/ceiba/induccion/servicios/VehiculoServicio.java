@@ -26,7 +26,7 @@ import com.ceiba.induccion.utils.validaciones.eliminar.ReglaEliminarVehiculo;
 import com.ceiba.induccion.utils.validaciones.eliminar.ReglasEliminarVehiculo;
 
 @Component
-public class VehiculoServicio {
+public class VehiculoServicio implements ImpVehiculoServicio {
 
 	@Autowired
 	private VehiculoRepositorio vehiculoRepositorio;
