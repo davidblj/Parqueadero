@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
-public class FacturaCarroDTO extends Factura {
+public class FacturaCarro extends Factura {
 	
 	private int valorHora = 1000;
 	private int valorDia = 8000;		

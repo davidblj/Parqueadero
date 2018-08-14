@@ -1,7 +1,6 @@
 package com.ceiba.induccion.vehiculos;
 
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ceiba.induccion.utils.ResponseDTO;
-import com.ceiba.induccion.utils.excepciones.Conflicto;
-import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
 import com.ceiba.induccion.utils.factura.Factura;
 
 @RestController
 @RequestMapping("/api/1.0/parqueadero/vehiculos")
 @CrossOrigin(origins = "http://localhost:4200")
 public class VehiculoControlador {		
-	
-	private static final Logger LOG = Logger.getLogger(VehiculoControlador.class.getName());	 	
 	
 	@Autowired
 	VehiculoServicio servicio;
@@ -44,36 +38,16 @@ public class VehiculoControlador {
 	}
 
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<String> crear(@RequestBody VehiculoDTO vehiculo) {	
+	public ResponseEntity<String> crear(@RequestBody VehiculoDTO vehiculo) {			
 		
-		try {			
-			servicio.agregar(vehiculo);		
-			return ResponseEntity.status(HttpStatus.CREATED)
-					.body("Recurso creado exitosamente");	
-			
-		} catch (ParametrosInvalidos e) {
-			
-			LOG.log(Level.WARNING, e.toString(), e);
-			throw e;
-			 
-		} catch (Conflicto e) {
-			
-			LOG.log(Level.WARNING, e.toString(), e);			
-			throw e;
-		}
+		servicio.agregar(vehiculo);		
+		return ResponseEntity.status(HttpStatus.CREATED).body("Recurso creado exitosamente");		
 	}			
 	
 	@RequestMapping(value="{placa}", method=RequestMethod.DELETE, produces="application/json")
-	public ResponseEntity<Object> eliminar(@PathVariable String placa) {
+	public ResponseEntity<Factura> eliminar(@PathVariable String placa) {
 		
-		try {
-			Factura factura = servicio.eliminar(placa);
-			return ResponseEntity.status(HttpStatus.OK).body(factura);
-			
-		} catch (ParametrosInvalidos e) {
-			
-			LOG.log(Level.WARNING, e.toString(), e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}		
+		Factura factura = servicio.eliminar(placa);
+		return ResponseEntity.status(HttpStatus.OK).body(factura);			
 	}	
 }

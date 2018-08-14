@@ -9,10 +9,10 @@ import com.ceiba.induccion.utils.Constants;
 public class FacturaFactory extends Factura {
 	
 	@Autowired
-	FacturaMotoDTO facturaMoto;
+	FacturaMoto facturaMoto;
 	
 	@Autowired
-	FacturaCarroDTO facturaCarro;	
+	FacturaCarro facturaCarro;	
 	
 	public Factura instanciarFactura(String tipo) {
 		
