@@ -22,7 +22,7 @@ public class ApiBuilder {
 		return new VehiculoModelo(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getCilindraje());
 	}
 	
-	public VehiculoIngresadoDTO vehiculoEntidadToVehiculoIngresadoDT(VehiculoEntidad vehiculo) {
+	public VehiculoIngresadoDTO vehiculoEntidadToVehiculoIngresadoDTO(VehiculoEntidad vehiculo) {
 		return new VehiculoIngresadoDTO(vehiculo.getPlaca(), vehiculo.getTipo(), vehiculo.getFechaDeIngreso());
 	}
 }
