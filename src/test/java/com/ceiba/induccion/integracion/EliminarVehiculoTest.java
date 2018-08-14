@@ -14,6 +14,7 @@ import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ceiba.induccion.entidades.ParqueaderoEntidad;
@@ -33,6 +34,9 @@ import com.ceiba.induccion.utils.factura.Factura;
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class EliminarVehiculoTest {
 
+	@SpyBean
+	private Calendario calendario;
+	
 	@Autowired
 	private ParqueaderoRepositorio parqueaderoRepositorio;
 	
@@ -40,10 +44,7 @@ public class EliminarVehiculoTest {
 	private VehiculoRepositorio vehiculoRepositorio;	
 	
 	@Autowired
-	private VehiculoServicio servicio;
-	
-	@MockBean
-	Calendario calendario;
+	private VehiculoServicio servicio;	
 	
 	String placaCarro = "WMQ999";
 	String placaMoto = "TC999";

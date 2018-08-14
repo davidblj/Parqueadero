@@ -15,7 +15,7 @@ public class Factura {
 	Calendario calendario;
 	
 	protected int horas = 0;			
-	protected int dias = 0;		
+	protected int dias = 0;
 	protected int precioFactura;
 	private Calendar fechaDeIngreso;
 	private Calendar fechaDeSalida;	
@@ -23,8 +23,9 @@ public class Factura {
 	public void generar(VehiculoModelo vehiculo) {
 		
 		fechaDeIngreso = vehiculo.getFechaDeIngreso();
+		fechaDeSalida = calendario.obtenerFechaActual();
 		
-		float horasTranscurridas = calcularHorasTranscurridas();
+		float horasTranscurridas = calendario.calcularHorasTranscurridas(fechaDeIngreso, fechaDeSalida);
 		calcularTiempoEstimado(horasTranscurridas);				
 	}
 	
@@ -40,25 +41,7 @@ public class Factura {
 		reset();
 		facturarDiasEstimados(horasTranscurridas);
 		facturarHorasEstimadas(horasTranscurridas);						
-	}
-	
-	private float calcularHorasTranscurridas() {
-							 
-		long fechaDeIngresoEnMillis = fechaDeIngreso.getTimeInMillis();
-		
-		Calendar tiempoActual = calendario.obtenerFechaActual();
-		long tiempoActualEnMillis = tiempoActual.getTimeInMillis();
-		fechaDeSalida = tiempoActual;		
-
-		long tiempoTranscurridoEnMilis = tiempoActualEnMillis - fechaDeIngresoEnMillis;
-		return convertirMiliEnHoras(tiempoTranscurridoEnMilis);
-	}
-	
-	private float convertirMiliEnHoras(long milisegundos) {		
-		
-		float equivalencia = ((float) 1000) * 60 * 60;  
-		return milisegundos/equivalencia;		
-	}
+	}		
 	
 	private void facturarDiasEstimados(float horasTranscurridas) {
 		
