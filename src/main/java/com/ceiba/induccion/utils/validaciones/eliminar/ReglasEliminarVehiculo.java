@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones.eliminar;
+package com.ceiba.induccion.utils.validaciones.eliminar;
 
 import java.util.ArrayList;
 import java.util.List;

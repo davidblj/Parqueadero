@@ -5,10 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.ceiba.induccion.entidades.VehiculoRepositorio;
 import com.ceiba.induccion.parqueadero.ParqueaderoEntidad;
 import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 
 @SpringBootApplication
 public class ParqueaderoApplication implements CommandLineRunner {		

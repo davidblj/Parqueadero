@@ -2,7 +2,7 @@ package com.ceiba.induccion.utils.factura;
 
 import org.springframework.stereotype.Component;
 
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
+import com.ceiba.induccion.modelos.VehiculoModelo;
 
 @Component
 public class FacturaMoto	extends Factura {

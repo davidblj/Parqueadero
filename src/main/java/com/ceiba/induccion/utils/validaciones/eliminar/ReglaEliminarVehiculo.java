@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos.validaciones.eliminar;
+package com.ceiba.induccion.utils.validaciones.eliminar;
 
 public interface ReglaEliminarVehiculo {
 	void validate(String placa);

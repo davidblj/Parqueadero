@@ -17,10 +17,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ceiba.induccion.modelos.VehiculoModelo;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

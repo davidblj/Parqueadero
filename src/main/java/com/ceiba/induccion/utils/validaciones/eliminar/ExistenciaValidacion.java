@@ -1,11 +1,11 @@
-package com.ceiba.induccion.vehiculos.validaciones.eliminar;
+package com.ceiba.induccion.utils.validaciones.eliminar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
-import com.ceiba.induccion.vehiculos.VehiculoEntidad;
-import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
+import com.ceiba.induccion.entidades.VehiculoEntidad;
+import com.ceiba.induccion.entidades.VehiculoRepositorio;
+import com.ceiba.induccion.excepciones.ParametrosInvalidos;
 
 @Component("ExistenciaValidacionEliminarVehiculo")
 public class ExistenciaValidacion implements ReglaEliminarVehiculo {

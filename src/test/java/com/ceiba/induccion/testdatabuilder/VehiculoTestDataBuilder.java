@@ -2,8 +2,8 @@ package com.ceiba.induccion.testdatabuilder;
 
 import java.util.Calendar;
 
+import com.ceiba.induccion.modelos.VehiculoModelo;
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 public class VehiculoTestDataBuilder {
 

@@ -1,8 +1,8 @@
-package com.ceiba.induccion.vehiculos.validaciones.agregar;
+package com.ceiba.induccion.utils.validaciones.agregar;
 
+import com.ceiba.induccion.excepciones.ParametrosInvalidos;
+import com.ceiba.induccion.modelos.VehiculoModelo;
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 public class TipoValidacion implements ReglaAgregarVehiculo {
 

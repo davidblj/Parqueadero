@@ -1,13 +1,13 @@
-package com.ceiba.induccion.vehiculos.validaciones.agregar;
+package com.ceiba.induccion.utils.validaciones.agregar;
 
 import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ceiba.induccion.excepciones.Conflicto;
+import com.ceiba.induccion.modelos.VehiculoModelo;
 import com.ceiba.induccion.utils.Calendario;
-import com.ceiba.induccion.utils.excepciones.Conflicto;
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
 
 @Component
 public class PlacaValidacion implements ReglaAgregarVehiculo {

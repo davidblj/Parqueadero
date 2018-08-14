@@ -16,12 +16,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ceiba.induccion.entidades.VehiculoEntidad;
+import com.ceiba.induccion.entidades.VehiculoRepositorio;
+import com.ceiba.induccion.excepciones.ParametrosInvalidos;
+import com.ceiba.induccion.modelos.VehiculoModelo;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
-import com.ceiba.induccion.utils.excepciones.ParametrosInvalidos;
-import com.ceiba.induccion.vehiculos.VehiculoEntidad;
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
-import com.ceiba.induccion.vehiculos.validaciones.eliminar.ExistenciaValidacion;
+import com.ceiba.induccion.utils.validaciones.eliminar.ExistenciaValidacion;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

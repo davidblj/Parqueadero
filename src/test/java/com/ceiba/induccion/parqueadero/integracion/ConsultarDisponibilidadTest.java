@@ -13,14 +13,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ceiba.induccion.entidades.VehiculoEntidad;
+import com.ceiba.induccion.entidades.VehiculoRepositorio;
+import com.ceiba.induccion.modelos.VehiculoModelo;
 import com.ceiba.induccion.parqueadero.ParqueaderoEntidad;
 import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
 import com.ceiba.induccion.parqueadero.ParqueaderoServicio;
 import com.ceiba.induccion.testdatabuilder.VehiculoTestDataBuilder;
 import com.ceiba.induccion.utils.Constants;
-import com.ceiba.induccion.vehiculos.VehiculoEntidad;
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
-import com.ceiba.induccion.vehiculos.VehiculoRepositorio;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

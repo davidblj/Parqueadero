@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos;
+package com.ceiba.induccion.services;
 
 
 import java.util.ArrayList;
@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ceiba.induccion.dto.VehiculoDTO;
+import com.ceiba.induccion.dto.VehiculoIngresadoDTO;
+import com.ceiba.induccion.entidades.VehiculoEntidad;
+import com.ceiba.induccion.entidades.VehiculoRepositorio;
+import com.ceiba.induccion.modelos.VehiculoModelo;
 import com.ceiba.induccion.parqueadero.ParqueaderoEntidad;
 import com.ceiba.induccion.parqueadero.ParqueaderoRepositorio;
 import com.ceiba.induccion.utils.ApiBuilder;
@@ -15,10 +20,10 @@ import com.ceiba.induccion.utils.Calendario;
 import com.ceiba.induccion.utils.Constants;
 import com.ceiba.induccion.utils.factura.Factura;
 import com.ceiba.induccion.utils.factura.FacturaFactory;
-import com.ceiba.induccion.vehiculos.validaciones.agregar.ReglaAgregarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.agregar.ReglasAgregarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.eliminar.ReglaEliminarVehiculo;
-import com.ceiba.induccion.vehiculos.validaciones.eliminar.ReglasEliminarVehiculo;
+import com.ceiba.induccion.utils.validaciones.agregar.ReglaAgregarVehiculo;
+import com.ceiba.induccion.utils.validaciones.agregar.ReglasAgregarVehiculo;
+import com.ceiba.induccion.utils.validaciones.eliminar.ReglaEliminarVehiculo;
+import com.ceiba.induccion.utils.validaciones.eliminar.ReglasEliminarVehiculo;
 
 @Component
 public class VehiculoServicio {

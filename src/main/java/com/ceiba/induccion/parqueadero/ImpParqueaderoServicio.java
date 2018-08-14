@@ -1,6 +1,6 @@
 package com.ceiba.induccion.parqueadero;
 
-import com.ceiba.induccion.vehiculos.VehiculoModelo;
+import com.ceiba.induccion.modelos.VehiculoModelo;
 
 public interface ImpParqueaderoServicio {
 	

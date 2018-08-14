@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos;
+package com.ceiba.induccion.modelos;
 
 import java.util.Calendar;
 

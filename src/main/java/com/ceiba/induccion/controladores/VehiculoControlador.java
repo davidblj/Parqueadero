@@ -1,4 +1,4 @@
-package com.ceiba.induccion.vehiculos;
+package com.ceiba.induccion.controladores;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ceiba.induccion.dto.VehiculoDTO;
+import com.ceiba.induccion.dto.VehiculoIngresadoDTO;
+import com.ceiba.induccion.services.VehiculoServicio;
 import com.ceiba.induccion.utils.factura.Factura;
 
 @RestController
