@@ -95,7 +95,7 @@ public class Vigilante {
 	
 	private VehiculoModelo encontrarVehiculo(String placa) {	
 		
-		VehiculoEntidad vehiculoEntidad = vehiculoRepositorio.findByPlaca(placa);	
+		VehiculoEntidad vehiculoEntidad = vehiculoRepositorio.findByFechaDeSalidaIsNullAndPlaca(placa);	
 		return apiBuilder.vehiculoEntidadToVehiculoModelo(vehiculoEntidad);
 	}
 	

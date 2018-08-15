@@ -44,7 +44,7 @@ public class ExistenciaValidacionTest {
 				nuevoVehiculoDTO.getTipo(), 
 				nuevoVehiculoDTO.getCilindraje(),
 				null);
-		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(vehiculoIngresado);
+		when(vehiculoRepositorio.findByFechaDeSalidaIsNullAndPlaca(anyString())).thenReturn(vehiculoIngresado);
 		
 		try {
 			// act
@@ -61,7 +61,7 @@ public class ExistenciaValidacionTest {
 	
 		// arrange
 		VehiculoModelo vehiculo = new VehiculoTestDataBuilder().build();		
-		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(null);
+		when(vehiculoRepositorio.findByFechaDeSalidaIsNullAndPlaca(anyString())).thenReturn(null);
 			
 		// act
 		existenciaValidacion.validate(vehiculo);			

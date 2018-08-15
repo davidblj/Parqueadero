@@ -1,6 +1,7 @@
 package com.ceiba.induccion.unitarias.validaciones.eliminar;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -41,44 +42,18 @@ public class ExistenciaValidacionTest {
 	public void validarVehiculoSinRegistro() {
 		
 		// arrange
-		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(null);
+		when(vehiculoRepositorio.findByFechaDeSalidaIsNullAndPlaca(anyString())).thenReturn(null);
 		
 		try {
 			// act
 			existenciaValidacion.validate(placa);
+			fail();
 			
 		} catch (ParametrosInvalidos e) {
 			// assert
 			assertEquals("El vehiculo actualmente no se encuentra al interior del parqueadero", e.getMessage());
 		}				
-	}
-			
-	@Test
-	public void validarVehiculoConRegistroYFacturado() {
-		
-		// arrange
-		Calendar fechaDeSalida = Calendar.getInstance();		
-		VehiculoModelo vehiculo = new VehiculoTestDataBuilder()
-				.conFechaDeSalida(fechaDeSalida)
-				.build();
-		VehiculoEntidad vehiculoEntidad = new VehiculoEntidad(
-				vehiculo.getPlaca(), 
-				vehiculo.getTipo(), 
-				vehiculo.getCilindraje(), 
-				vehiculo.getFechaDeIngreso(),
-				vehiculo.getFechaDeSalida());
-		
-		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(vehiculoEntidad);
-		
-		try {
-			// act
-			existenciaValidacion.validate(placa);
-			
-		} catch (ParametrosInvalidos e) {
-			// assert
-			assertEquals("El vehiculo actualmente no se encuentra al interior del parqueadero", e.getMessage());
-		}					
-	}
+	}				
 	
 	@Test(expected = Test.None.class)
 	public void validarVehiculoConRegistroSinFacturar() {
@@ -90,7 +65,7 @@ public class ExistenciaValidacionTest {
 				vehiculo.getTipo(), 
 				vehiculo.getCilindraje(), 
 				vehiculo.getFechaDeIngreso());
-		when(vehiculoRepositorio.findByPlaca(anyString())).thenReturn(vehiculoEntidad);
+		when(vehiculoRepositorio.findByFechaDeSalidaIsNullAndPlaca(anyString())).thenReturn(vehiculoEntidad);
 		
 		// act
 		existenciaValidacion.validate(placa);		
