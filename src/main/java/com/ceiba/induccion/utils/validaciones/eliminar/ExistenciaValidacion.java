@@ -16,9 +16,8 @@ public class ExistenciaValidacion implements ReglaEliminarVehiculo {
 	@Override
 	public void validate(String placa) {		
 		
-		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placa);
-		boolean vehiculoNoExiste = vehiculo == null ||
-								   vehiculo.getFechaDeSalida() != null;
+		VehiculoEntidad vehiculo = vehiculoRepositorio.findByFechaDeSalidaIsNullAndPlaca(placa);
+		boolean vehiculoNoExiste = vehiculo == null;
 		
 		if (vehiculoNoExiste)
 			throw new ParametrosInvalidos("El vehiculo actualmente no se encuentra al interior del parqueadero");

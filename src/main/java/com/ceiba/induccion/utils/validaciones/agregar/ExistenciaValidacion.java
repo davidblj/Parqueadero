@@ -1,5 +1,7 @@
 package com.ceiba.induccion.utils.validaciones.agregar;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +19,7 @@ public class ExistenciaValidacion implements ReglaAgregarVehiculo {
 	@Override
 	public void validate(VehiculoModelo data) {
 		
-		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(data.getPlaca());
+		VehiculoEntidad vehiculo = vehiculoRepositorio.findByFechaDeSalidaIsNullAndPlaca(data.getPlaca());
 		boolean vehiculoExiste = vehiculo != null;
 		
 		if (vehiculoExiste)

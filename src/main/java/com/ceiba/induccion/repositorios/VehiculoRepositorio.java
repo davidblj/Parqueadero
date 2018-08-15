@@ -14,6 +14,8 @@ public interface VehiculoRepositorio extends CrudRepository<VehiculoEntidad, Lon
 	
 	public VehiculoEntidad findByPlaca(String placa);
 	
+	public VehiculoEntidad findByFechaDeSalidaIsNullAndPlaca(String placa);
+	
 	public List<VehiculoEntidad> findByFechaDeSalidaIsNull();
 	
 	@Modifying

@@ -46,8 +46,6 @@ public class AgregarVehiculoTest {
 	@MockBean
 	private Calendario calendario;
 	
-	// TODO: code duplication and simplicity. do use a parqueaderoTestDataBuilder()
-	
 	@Before
 	public void SetUp() {
 		parqueaderoRepositorio.deleteAll();
