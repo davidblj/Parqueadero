@@ -12,7 +12,5 @@ public interface ImpVehiculoServicio {
 	
 	public Factura eliminar(String placa);
 	
-	public List<VehiculoIngresadoDTO> listar();
-	
-	public VehiculoIngresadoDTO consultar(String placa);
+	public List<VehiculoIngresadoDTO> listar();	
 }

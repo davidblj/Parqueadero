@@ -37,11 +37,5 @@ public class VehiculoServicio implements ImpVehiculoServicio {
 		
 		List<VehiculoEntidad> vehiculos = vehiculoRepositorio.findByFechaDeSalidaIsNull();
 		return apiBuilder.listaVehiculoEntidadToVehiculoDTO(vehiculos);
-	}
-	
-	public VehiculoIngresadoDTO consultar(String placa) {
-		
-		VehiculoEntidad vehiculo = vehiculoRepositorio.findByPlaca(placa);
-		return apiBuilder.vehiculoEntidadToVehiculoIngresadoDTO(vehiculo);
 	}		
 }

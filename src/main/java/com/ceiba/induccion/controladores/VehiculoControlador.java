@@ -32,13 +32,6 @@ public class VehiculoControlador {
 		return ResponseEntity.status(HttpStatus.OK).body(vehiculos);	
 	}
 	
-	@RequestMapping(value="{placa}", method=RequestMethod.GET, produces="application/json")
-	public ResponseEntity<VehiculoIngresadoDTO> consultar(@PathVariable String placa) {
-		
-		VehiculoIngresadoDTO vehiculo = servicio.consultar(placa);
-		return ResponseEntity.status(HttpStatus.OK).body(vehiculo);
-	}
-
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public ResponseEntity<String> crear(@RequestBody VehiculoDTO vehiculo) {			
 		
